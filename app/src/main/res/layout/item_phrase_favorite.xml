@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/list_item_favorite_character"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_3"
+        android:layout_marginRight="@dimen/margin_3"
+        android:visibility="gone"
+        card_view:cardBackgroundColor="?attr/colorPrimary"
+        card_view:cardCornerRadius="@dimen/margin_1"
+        card_view:cardElevation="@dimen/margin_2"
+        card_view:cardUseCompatPadding="true">
+
+        <TextView
+            android:id="@+id/tvTittle_List_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:singleLine="true"
+            android:text="Idiom"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18" />
+    </android.support.v7.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/phrase"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_marginRight="@dimen/margin_8"
+            card_view:cardCornerRadius="@dimen/margin_2"
+            card_view:cardElevation="@dimen/margin_2"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="15"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/icon_phrase"
+                        android:layout_width="@dimen/margin_27"
+                        android:layout_height="@dimen/margin_27" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/acz"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="70"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/margin_8"
+                    android:paddingTop="@dimen/margin_7">
+
+                    <TextView
+                        android:id="@+id/tvTittle_List"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_2"
+                        android:singleLine="true"
+                        android:text="Idiom"
+                        android:textColor="?attr/colorPrimaryDark"
+
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/tvMeanning_List"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_7"
+                        android:layout_marginLeft="@dimen/margin_9"
+                        android:singleLine="true"
+                        android:text="Meaning frgaga gagaggaa ff a a "
+                        android:textColor="?attr/colorPrimary"
+
+                        android:textSize="@dimen/text_size_14"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+                <LinearLayout
+
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="15">
+
+                    <RelativeLayout
+                        android:id="@+id/favorite_icon_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/favorite_icon"
+                            android:layout_width="@dimen/phrase_star_icon_size"
+                            android:layout_height="@dimen/phrase_star_icon_size"
+                            android:layout_marginLeft="@dimen/margin_18"
+                            android:layout_marginTop="@dimen/margin_20" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+</LinearLayout>

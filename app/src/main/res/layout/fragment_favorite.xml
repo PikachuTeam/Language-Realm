@@ -1,0 +1,51 @@
+<com.tatteam.languagerealm.app.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/appbar"
+            layout="@layout/toolbar"></include>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/appbar"
+            android:id="@+id/recycler_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fadeScrollbars="true"
+
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarSize="@dimen/margin_3"
+            android:scrollbarThumbVertical="?attr/colorPrimary"
+            android:scrollbars="vertical" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/non_favorite"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingBottom="@dimen/margin_65">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="@dimen/margin_65"
+            android:gravity="center"
+            android:text="@string/no_favorite_idioms"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="@dimen/text_size_26" />
+
+    </RelativeLayout>
+</com.tatteam.languagerealm.app.FractionFrameLayout>

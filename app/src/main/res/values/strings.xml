@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">Language-Realm</string>
+    <string name="app_name">Slang And Idiom</string>
+    <string name="action_settings">Settings</string>
+    <string name="home">Home</string>
+    <string name="favorite_menu">Favorite</string>
+    <string name="search">Search</string>
+    <string name="slang">Slang</string>
+    <string name="idiom">Idiom</string>
+    <string name="proverb">Proverb</string>
+    <string name="favorite">Favorite</string>
+    <string name="recent">Recent</string>
+    <string name="feedback">FeedBack</string>
+    <string name="removeads">Remove Ads</string>
+    <string name="subitem">Sub Item</string>
+    <string name="please_click_back_again_to_exit">Please click back again to exit</string>
+    <string name="no_favorite_idioms">No favorite</string>
+    <string name="no_recent">No Recent</string>
+    <string name="removed_from_favorite">Removed from favorite</string>
+    <string name="added_to_favorite">Added to favorite</string>
+    <string name="input_to_search">Input something to search</string>
+    <string name="no_result">No Result</string>
+
 </resources>

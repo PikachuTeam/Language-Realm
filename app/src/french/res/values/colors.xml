@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //App color
+    <color name="colorPrimary">#5c5c5c</color>
+    <color name="colorPrimaryLight">#636363</color>
+    <color name="colorPrimaryDark">#414141</color>
+    <color name="colorAccent">#e9484b</color>
+
+    <color name="nav_selected">#dedddd</color>
+    <color name="white">#FFFFFF</color>
+    <color name="window_background">#f1f1f1</color>
+    <color name="window_background1">#d9d9d9</color>
+    <color name="window_background2">#e8e8e8</color>
+
+    //Slang color
+    <color name="slang_Primary">#594a4c</color>
+    <color name="slang_PrimaryDark">#413638</color>
+    <color name="slang_Accent">#efaf16</color>
+
+    //Idiom color
+    <color name="idiom_Primary">#3b4656</color>
+    <color name="idiom_PrimaryDark">#2e3643</color>
+    <color name="idiom_Accent">#a0654c</color>
+
+    //Proverb color
+    <color name="proverb_Primary">#a7573c</color>
+    <color name="proverb_PrimaryDark">#894832</color>
+    <color name="proverb_Accent">#257cab</color>
+
+
+</resources>

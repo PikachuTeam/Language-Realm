@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.andexert.library.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rippleView"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    app:rv_framerate="10"
+    app:rv_color="@color/colorPrimary"
+
+    app:rv_rippleDuration="120"
+    app:rv_zoom="true"
+    app:rv_zoomDuration="60"
+    app:rv_zoomScale="1.1">
+
+    <LinearLayout
+        android:id="@+id/bg_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin_1"
+        android:paddingTop="@dimen/margin_1">
+
+        <ImageView
+            android:id="@+id/icon_nav"
+            android:layout_width="@dimen/img_nav_size"
+            android:layout_height="@dimen/img_nav_size"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:padding="@dimen/margin_8" />
+
+        <TextView
+            android:id="@+id/tittle_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_25"
+            android:gravity="center_vertical"
+            android:text="Slang"
+            android:textSize="@dimen/text_size_18" />
+    </LinearLayout>
+</com.andexert.library.RippleView>

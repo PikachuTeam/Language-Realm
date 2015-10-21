@@ -1,0 +1,44 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="SlangTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/slang_Primary</item>
+        <item name="colorPrimaryDark">@color/slang_PrimaryDark</item>
+        <item name="colorAccent">@color/slang_Accent</item>
+    </style>
+
+    <style name="IdiomTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/idiom_Primary</item>
+        <item name="colorPrimaryDark">@color/idiom_PrimaryDark</item>
+        <item name="colorAccent">@color/idiom_Accent</item>
+    </style>
+
+    <style name="ProverbTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/proverb_Primary</item>
+        <item name="colorPrimaryDark">@color/proverb_PrimaryDark</item>
+        <item name="colorAccent">@color/proverb_Accent</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+</resources>
