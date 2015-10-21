@@ -11,12 +11,10 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_3"
-        android:layout_marginRight="@dimen/margin_3"
         android:visibility="gone"
         card_view:cardBackgroundColor="@color/white"
         card_view:cardCornerRadius="@dimen/margin_1"
-        card_view:cardElevation="@dimen/margin_2"
+        card_view:cardElevation="@dimen/margin_3"
         card_view:cardUseCompatPadding="true">
 
         <TextView
@@ -43,9 +41,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_marginLeft="@dimen/margin_4"
 
-            android:layout_marginRight="@dimen/margin_8"
+            android:layout_marginRight="@dimen/margin_4"
             card_view:cardCornerRadius="@dimen/margin_2"
 
             card_view:cardElevation="@dimen/margin_2"
@@ -71,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="85"
                         android:orientation="vertical"
-                        android:padding="@dimen/margin_6">
+                        android:padding="@dimen/margin_7">
 
                         <TextView
                             android:id="@+id/tvTittle_List"
@@ -102,6 +100,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="15"
+                        android:paddingLeft="@dimen/margin_8"
                         android:gravity="center">
 
                         <ImageView

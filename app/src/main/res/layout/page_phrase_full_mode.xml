@@ -11,9 +11,8 @@
 
 
 
-        <include layout="@layout/view_list_phrase_in_full_mode"></include>
-
         <include layout="@layout/view_list_letter_in_full_mode"></include>
+
 
 
 </RelativeLayout>

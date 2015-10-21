@@ -1,43 +1,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/view_lisr_phrase"
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:scrollbarThumbVertical="@color/colorPrimary"
+    card_view:cardBackgroundColor="@color/window_background2">
 
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fadeScrollbars="true"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:scrollbarSize="@dimen/margin_3"
-        android:scrollbarThumbVertical="@color/colorPrimary"
-        card_view:cardBackgroundColor="@color/window_background"
-        card_view:cardCornerRadius="@dimen/margin_1"
-        card_view:cardElevation="@dimen/margin_3"
-        card_view:cardUseCompatPadding="true">
+        android:background="@color/window_background">
 
-        <RelativeLayout
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_list_idioms"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/window_background"
-            android:paddingTop="@dimen/margin_3"
-            android:visibility="visible">
+            android:layout_gravity="center"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarSize="@dimen/margin_3"
+            android:scrollbarThumbVertical="?attr/colorPrimary"
+            android:scrollbars="vertical" />
 
-            <!-- TODO: Update blank fragment layout -->
-
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view_list_idioms"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:scrollbarSize="@dimen/margin_3"
-                android:scrollbarThumbVertical="?attr/colorPrimary"
-                android:scrollbars="vertical" />
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </RelativeLayout>
 </RelativeLayout>

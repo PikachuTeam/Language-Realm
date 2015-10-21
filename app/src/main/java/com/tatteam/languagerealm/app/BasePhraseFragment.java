@@ -101,8 +101,12 @@ public abstract class BasePhraseFragment extends BaseFragment {
             });
         } else {
             fabSwitchMode.setImageDrawable(getResources().getDrawable(R.drawable.ic_view_list_white_24dp));
-            final PhraseFullModePage phraseFullModePage = (PhraseFullModePage) pagerAdapter.myPages[1];
-            phraseFullModePage.setUpFabSwitchMode();
+            fabSwitchMode.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewPager.setCurrentItem(0);
+                }
+            });
         }
     }
 
@@ -169,20 +173,22 @@ public abstract class BasePhraseFragment extends BaseFragment {
         backSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                searchView.onActionViewCollapsed();
-                contentSearch.setVisibility(View.GONE);
-                toolbar.setNavigationIcon(R.drawable.ic_menu_white_24dp);
-                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        getBaseActivity().getDrawerLayout().openDrawer(GravityCompat.START);
-                    }
-                });
-
+                backSearch();
             }
         });
 
+    }
+
+    public void backSearch() {
+        searchView.onActionViewCollapsed();
+        contentSearch.setVisibility(View.GONE);
+        toolbar.setNavigationIcon(R.drawable.ic_menu_white_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getBaseActivity().getDrawerLayout().openDrawer(GravityCompat.START);
+            }
+        });
     }
 
     private void setActionSearchViewQuery() {
@@ -277,7 +283,5 @@ public abstract class BasePhraseFragment extends BaseFragment {
         return contentSearch;
     }
 
-    public RelativeLayout getBackSearch() {
-        return backSearch;
-    }
+
 }

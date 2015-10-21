@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.tatteam.languagerealm.R;
@@ -30,6 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
 
     private ListView lvNav;
+    private ImageView imgHeader;
     private NavEntity[] listNavItem;
     private NavAdapter mAdapter;
     private long backPressed;
@@ -58,14 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 if (fragment.isPhraseFragment()) {
                     BasePhraseFragment fragment1 = (BasePhraseFragment) getFragmentManager().findFragmentById(R.id.main_content);
                     if (fragment1.getContentSearch().getVisibility() == View.VISIBLE) {
-
-                        fragment1.getBackSearch().callOnClick();
-                    } else if (fragment1.viewPager.getCurrentItem() == 1) {
-                        PhraseFullModePage phraseFullModePage = (PhraseFullModePage) fragment1.pagerAdapter.myPages[1];
-                        if (phraseFullModePage.contentLetter.getVisibility() == View.GONE)
-                            fragment1.fabSwitchMode.callOnClick();
-                        else handleDoubleBackToExit();
-
+                        fragment1.backSearch();
                     } else handleDoubleBackToExit();
                 } else
                     handleDoubleBackToExit();
