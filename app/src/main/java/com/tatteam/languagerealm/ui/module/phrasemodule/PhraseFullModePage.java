@@ -1,14 +1,9 @@
 package com.tatteam.languagerealm.ui.module.phrasemodule;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.RelativeLayout;
-
 
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;
@@ -16,10 +11,7 @@ import com.tatteam.languagerealm.app.BasePage;
 import com.tatteam.languagerealm.app.BasePhraseFragment;
 import com.tatteam.languagerealm.database.DataSource;
 import com.tatteam.languagerealm.entity.LetterEntity;
-import com.tatteam.languagerealm.entity.PhraseEntity;
 import com.tatteam.languagerealm.ui.adapter.LetterFullModeAdapter;
-import com.tatteam.languagerealm.ui.adapter.PhraseInFullModeAdapter;
-import com.tatteam.languagerealm.ui.module.DetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;

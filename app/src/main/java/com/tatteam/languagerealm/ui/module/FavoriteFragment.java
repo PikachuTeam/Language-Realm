@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseFragment;
 import com.tatteam.languagerealm.database.DataSource;

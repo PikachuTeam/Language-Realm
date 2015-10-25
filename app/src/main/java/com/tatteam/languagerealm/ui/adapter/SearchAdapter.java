@@ -7,18 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;
 import com.tatteam.languagerealm.entity.PhraseEntity;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import tatteam.com.app_common.ui.drawable.RippleEffectDark;
 
 /**
  * Created by Shu on 10/17/2015.

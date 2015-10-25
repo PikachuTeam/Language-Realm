@@ -1,6 +1,5 @@
 package com.tatteam.languagerealm.app;
 
-import android.animation.ObjectAnimator;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -8,9 +7,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -19,7 +16,6 @@ import com.tatteam.languagerealm.entity.NavEntity;
 import com.tatteam.languagerealm.ui.adapter.NavAdapter;
 import com.tatteam.languagerealm.ui.module.FavoriteFragment;
 import com.tatteam.languagerealm.ui.module.RecentFragment;
-import com.tatteam.languagerealm.ui.module.phrasemodule.PhraseFullModePage;
 import com.tatteam.languagerealm.ui.module.phrasemodule.phrase.IdiomFragment;
 import com.tatteam.languagerealm.ui.module.phrasemodule.phrase.ProverbFragment;
 import com.tatteam.languagerealm.ui.module.phrasemodule.phrase.SlangFragment;

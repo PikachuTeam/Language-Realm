@@ -11,14 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseFragment;
 import com.tatteam.languagerealm.database.DataSource;
 import com.tatteam.languagerealm.entity.PhraseEntity;
 import com.tatteam.languagerealm.ui.adapter.FavoriteAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

@@ -18,7 +18,6 @@ import com.tatteam.languagerealm.entity.PhraseEntity;
 
 import java.util.List;
 
-import tatteam.com.app_common.AppCommon;
 import tatteam.com.app_common.ui.drawable.RippleEffectDark;
 
 

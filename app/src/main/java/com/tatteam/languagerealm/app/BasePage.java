@@ -1,12 +1,8 @@
 package com.tatteam.languagerealm.app;
 
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.tatteam.languagerealm.app.BaseActivity;
-import com.tatteam.languagerealm.app.BasePhraseFragment;
 
 /**
  * Created by ThanhNH on 9/11/2015.
