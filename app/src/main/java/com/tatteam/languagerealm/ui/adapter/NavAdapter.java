@@ -53,6 +53,7 @@ public class NavAdapter extends BaseAdapter {
 
     public class Holder {
         LinearLayout bg_item;
+        LinearLayout line;
         TextView tv_tittle;
         ImageView iv_icon;
     }
@@ -68,9 +69,10 @@ public class NavAdapter extends BaseAdapter {
         holder.tv_tittle = (TextView) rowView.findViewById(R.id.tittle_nav);
         holder.iv_icon = (ImageView) rowView.findViewById(R.id.icon_nav);
         holder.bg_item = (LinearLayout) rowView.findViewById(R.id.bg_item);
+        holder.line = (LinearLayout) rowView.findViewById(R.id.line);
         holder.tv_tittle.setText(context.getResources().getString(list[position].tittle_id));
         holder.iv_icon.setImageResource(list[position].icon_id);
-        if (list[position].tittle_id == R.string.favorite || list[position].tittle_id == R.string.recent)
+        if (list[position].tittle_id == R.string.favorite || list[position].tittle_id == R.string.recent||list[position].tittle_id==R.string.more_app)
             holder.iv_icon.setColorFilter(context.getResources().getColor(R.color.colorPrimaryLight));
         if (list[position].selected) {
             holder.bg_item.setBackgroundColor(context.getResources().getColor(R.color.nav_selected));
@@ -80,6 +82,7 @@ public class NavAdapter extends BaseAdapter {
             holder.tv_tittle.setTextColor(context.getResources().getColor(R.color.colorPrimary));
 
         }
+        if (list[position].tittle_id==R.string.more_app) holder.line.setVisibility(View.VISIBLE);
         return rowView;
     }
 

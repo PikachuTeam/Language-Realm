@@ -16,6 +16,8 @@ import com.tatteam.languagerealm.entity.PhraseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+import tatteam.com.app_common.ui.drawable.RippleEffectLight;
+
 
 public class PhraseInQuickModeAdapter extends RecyclerView.Adapter<PhraseInQuickModeAdapter.ViewHolder> {
 
@@ -67,13 +69,13 @@ public class PhraseInQuickModeAdapter extends RecyclerView.Adapter<PhraseInQuick
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, RippleView.OnRippleCompleteListener {
         public TextView tvPhrase;
         public CardView bgPhrase;
-        public RippleView rippleView;
+        public RippleEffectLight rippleView;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            rippleView = (RippleView) itemView.findViewById(R.id.rippleView);
+            rippleView = (RippleEffectLight) itemView.findViewById(R.id.rippleView);
             tvPhrase = (TextView) itemView.findViewById(R.id.tv_phrase);
             bgPhrase = (CardView) itemView.findViewById(R.id.bg_phrase);
                         rippleView.setOnRippleCompleteListener(this);

@@ -11,11 +11,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;
 import com.tatteam.languagerealm.entity.PhraseEntity;
 
 import java.util.List;
+
+import tatteam.com.app_common.AppCommon;
+import tatteam.com.app_common.ui.drawable.RippleEffectDark;
 
 
 /**
@@ -29,6 +33,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     public FavoriteAdapter(BaseActivity activity, List<PhraseEntity> list) {
         this.activity = activity;
         this.list = list;
+
     }
 
     @Override
@@ -76,11 +81,11 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder  {
         public TextView tvTitle;
         public TextView tvMeaning;
         public CardView item_favorite_character;
-        public CardView phrase_item;
+        public RippleEffectDark phrase_item;
         public RelativeLayout phrase;
         public ImageView imageView, icon_phrase;
         public TextView tvFavoriteCharacter;
@@ -95,27 +100,33 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             tvFavoriteCharacter = (TextView) itemView.findViewById(R.id.tvTittle_List_favorite);
             imageView = (ImageView) itemView.findViewById(R.id.favorite_icon);
             favorite_icon = (RelativeLayout) itemView.findViewById(R.id.favorite_icon_layout);
-            phrase_item = (CardView) itemView.findViewById(R.id.card_view2);
+            phrase_item = (RippleEffectDark) itemView.findViewById(R.id.card_view2);
             icon_phrase = (ImageView) itemView.findViewById(R.id.icon_phrase);
             item_favorite_character = (CardView) itemView.findViewById(R.id.list_item_favorite_character);
-            favorite_icon.setOnClickListener(this);
-            phrase_item.setOnClickListener(this);
+            favorite_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mlisListener != null) {
+                        if (v == favorite_icon)
+                            mlisListener.onFavoriteChange(getAdapterPosition());
+
+                    }
+                }
+            });
+            phrase_item.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+                @Override
+                public void onComplete(RippleView rippleView) {
+                    if (mlisListener != null) {
+                        if (rippleView == phrase_item)
+                            mlisListener.onPhraseClick(getAdapterPosition());
+
+                    }
+                }
+            });
 
         }
 
 
-
-
-
-        @Override
-        public void onClick(View v) {
-            if (mlisListener != null) {
-                if (v == favorite_icon)
-                    mlisListener.onFavoriteChange(getAdapterPosition());
-                else     mlisListener.onPhraseClick(getAdapterPosition());
-
-            }
-        }
     }
 
     public interface ClickListener {

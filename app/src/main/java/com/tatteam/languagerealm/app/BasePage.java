@@ -1,5 +1,6 @@
 package com.tatteam.languagerealm.app;
 
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,12 @@ public abstract class BasePage {
 
 
     public BasePage(BasePhraseFragment fragment, BaseActivity activity) {
-        this(activity,fragment,null);
+        this(activity, fragment, null);
     }
 
-    public BasePage(BaseActivity activity,BasePhraseFragment fragment, ViewGroup parent) {
+    public BasePage(BaseActivity activity, BasePhraseFragment fragment, ViewGroup parent) {
         this.fragment = fragment;
+
         this.activity = activity;
         if (parent != null) {
             LayoutInflater inflater = (LayoutInflater) activity.getSystemService(activity.LAYOUT_INFLATER_SERVICE);
@@ -31,6 +33,7 @@ public abstract class BasePage {
         } else {
             content = View.inflate(activity, getContentId(), null);
         }
+
     }
 
     public View getContent() {
@@ -39,4 +42,5 @@ public abstract class BasePage {
 
     public void destroy() {
     }
+
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<tatteam.com.app_common.ui.drawable.RippleEffectDark xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -9,10 +9,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/phrase"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,11 +57,7 @@
                     android:singleLine="true"
                     android:text="Idiom"
                     android:textColor="?attr/colorPrimaryDark"
-
                     android:textSize="@dimen/text_size_20" />
-
-
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+</tatteam.com.app_common.ui.drawable.RippleEffectDark>

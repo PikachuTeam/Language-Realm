@@ -2,20 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rippleView"
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.andexert.library.RippleView
-        android:id="@+id/rippleView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:rv_color="@color/nav_selected"
-        app:rv_framerate="12"
-        app:rv_rippleDuration="25"
-        app:rv_zoom="true"
-        app:rv_zoomDuration="25"
-        app:rv_zoomScale="1.2">
 
         <android.support.v7.widget.CardView
             android:id="@+id/background_letter"
@@ -38,5 +29,4 @@
                 android:textSize="@dimen/text_size_23" />
 
         </android.support.v7.widget.CardView>
-    </com.andexert.library.RippleView>
 </RelativeLayout>

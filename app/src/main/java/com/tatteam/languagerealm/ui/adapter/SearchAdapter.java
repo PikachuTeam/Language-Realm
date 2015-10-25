@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;
 import com.tatteam.languagerealm.entity.PhraseEntity;
@@ -17,11 +18,15 @@ import com.tatteam.languagerealm.entity.PhraseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+import tatteam.com.app_common.ui.drawable.RippleEffectDark;
+
 /**
  * Created by Shu on 10/17/2015.
  */
 public class SearchAdapter extends BaseAdapter {
     private List<PhraseEntity> list;
+    private ClickListener mlisListener;
+
     private Context context;
 
     private static LayoutInflater inflater = null;
@@ -85,4 +90,13 @@ public class SearchAdapter extends BaseAdapter {
         return rowView;
     }
 
+    public interface ClickListener {
+        void onPhraseClick(int position);
+
+
+    }
+
+    public void setmLislistener(ClickListener mlisListener) {
+        this.mlisListener = mlisListener;
+    }
 }

@@ -37,6 +37,8 @@ public class PhraseQuickModePage extends BasePage implements PhraseInQuickModeAd
     private List<PhraseEntity> listPhrase;
     public PhraseQuickModePage(BaseActivity activity,BasePhraseFragment fragment) {
         super(fragment,activity);
+
+
         loadData();
         setUpRvLetter();
         setupRvPhrase();

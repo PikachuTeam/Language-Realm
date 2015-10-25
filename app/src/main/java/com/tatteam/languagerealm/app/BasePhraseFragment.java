@@ -1,6 +1,7 @@
 package com.tatteam.languagerealm.app;
 
 import android.graphics.drawable.Icon;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -18,8 +20,14 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.ToxicBakery.viewpager.transforms.AccordionTransformer;
+import com.ToxicBakery.viewpager.transforms.CubeOutTransformer;
+import com.ToxicBakery.viewpager.transforms.DepthPageTransformer;
 import com.ToxicBakery.viewpager.transforms.FlipHorizontalTransformer;
+import com.ToxicBakery.viewpager.transforms.ForegroundToBackgroundTransformer;
 import com.ToxicBakery.viewpager.transforms.RotateUpTransformer;
+import com.ToxicBakery.viewpager.transforms.ScaleInOutTransformer;
+import com.ToxicBakery.viewpager.transforms.TabletTransformer;
+import com.ToxicBakery.viewpager.transforms.ZoomOutSlideTransformer;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseFragment;
 import com.tatteam.languagerealm.database.DataSource;
@@ -37,6 +45,7 @@ import java.util.List;
 public abstract class BasePhraseFragment extends BaseFragment {
     public int FRAGMENT_NAME_ID;
     public int THEME_STYLE_ID;
+    public int STATUS_BAR_ID;
     public int IMAGE_BANNER_ID;
     public String SQL_TABLE_NAME;
 
@@ -62,6 +71,7 @@ public abstract class BasePhraseFragment extends BaseFragment {
     protected abstract int getThemeID();
 
     protected abstract int getFragmentNameID();
+    protected abstract int getStatusBarColor();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,11 +80,15 @@ public abstract class BasePhraseFragment extends BaseFragment {
         IMAGE_BANNER_ID = getBannerID();
         FRAGMENT_NAME_ID = getFragmentNameID();
         THEME_STYLE_ID = getThemeID();
+        STATUS_BAR_ID =getStatusBarColor();
         updateTheme();
     }
 
     public void updateTheme() {
         getBaseActivity().setTheme(THEME_STYLE_ID);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getBaseActivity().getWindow().setStatusBarColor(getResources().getColor(STATUS_BAR_ID));
+        }
     }
 
     @Override
@@ -116,7 +130,7 @@ public abstract class BasePhraseFragment extends BaseFragment {
             pagerAdapter = new MyViewPagerAdapter(getBaseActivity(), this);
         }
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setPageTransformer(true, new RotateUpTransformer());
+        viewPager.setPageTransformer(true, new TabletTransformer());
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

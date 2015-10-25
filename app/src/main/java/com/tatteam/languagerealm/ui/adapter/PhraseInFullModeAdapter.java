@@ -12,11 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;
 import com.tatteam.languagerealm.entity.PhraseEntity;
 
 import java.util.List;
+
+import tatteam.com.app_common.ui.drawable.RippleEffectDark;
 
 
 /**
@@ -63,7 +66,7 @@ public class PhraseInFullModeAdapter extends RecyclerView.Adapter<PhraseInFullMo
         public TextView tvTitle;
         public TextView tvMeaning;
         public CardView item_favorite_character;
-        public CardView phrase_item;
+        public RippleEffectDark phrase_item;
         public RelativeLayout phrase;
         public ImageView imageView;
         public TextView tvFavoriteCharacter;
@@ -78,10 +81,16 @@ public class PhraseInFullModeAdapter extends RecyclerView.Adapter<PhraseInFullMo
             tvFavoriteCharacter = (TextView) itemView.findViewById(R.id.tvTittle_List_favorite);
             imageView = (ImageView) itemView.findViewById(R.id.favorite_icon);
             favorite_icon = (LinearLayout) itemView.findViewById(R.id.favorite_icon_layout);
-            phrase_item = (CardView) itemView.findViewById(R.id.card_view2);
+            phrase_item = (RippleEffectDark) itemView.findViewById(R.id.card_view2);
             item_favorite_character = (CardView) itemView.findViewById(R.id.list_item_favorite_character);
             favorite_icon.setOnClickListener(this);
-            phrase_item.setOnClickListener(this);
+            phrase_item.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+                @Override
+                public void onComplete(RippleView rippleView) {
+                    if (rippleView == phrase_item)
+                    mlisListener.onPhraseClick(getAdapterPosition());
+                }
+            });
 
         }
 
@@ -91,7 +100,7 @@ public class PhraseInFullModeAdapter extends RecyclerView.Adapter<PhraseInFullMo
             if (mlisListener != null) {
                 if (v == favorite_icon)
                     mlisListener.onFavoriteChange(getAdapterPosition());
-                else mlisListener.onPhraseClick(getAdapterPosition());
+
 
             }
         }

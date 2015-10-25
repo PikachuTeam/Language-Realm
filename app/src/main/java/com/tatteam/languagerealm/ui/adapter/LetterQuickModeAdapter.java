@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.andexert.library.RippleView;
@@ -90,22 +91,22 @@ public class LetterQuickModeAdapter extends RecyclerView.Adapter<LetterQuickMode
     class ViewHolder extends RecyclerView.ViewHolder{
         public TextView tvCharacter;
         public CardView cvCharacter;
-        public RippleView rippleView;
+        public RelativeLayout rippleView;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             cvCharacter = (CardView) itemView.findViewById(R.id.background_letter);
             tvCharacter = (TextView) itemView.findViewById(R.id.tv_letter);
-            rippleView = (RippleView) itemView.findViewById(R.id.rippleView);
-
-
-            rippleView.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            rippleView = (RelativeLayout) itemView.findViewById(R.id.rippleView);
+            rippleView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onComplete(RippleView rippleView) {
+                public void onClick(View v) {
                     mlistener.onLetterClick(getAdapterPosition());
+
                 }
             });
+
 
         }
 

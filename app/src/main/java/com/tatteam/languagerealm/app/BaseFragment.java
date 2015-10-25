@@ -3,6 +3,7 @@ package com.tatteam.languagerealm.app;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
@@ -14,7 +15,6 @@ import com.tatteam.languagerealm.R;
  */
 public abstract class BaseFragment extends Fragment {
     private boolean isPhraseFragment;
-
     protected abstract boolean isPhraseFragment();
 
     @Override
@@ -34,8 +34,15 @@ public abstract class BaseFragment extends Fragment {
         transaction.commit();
     }
 
-    public void setTheme(int id){
+    public void setTheme(int id) {
         getBaseActivity().setTheme(id);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getBaseActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+    }
+
+    public void setNavHeaderColor(int id) {
+        getBaseActivity().getBgHeader().setBackgroundColor(getResources().getColor(id));
     }
 
     public BaseActivity getBaseActivity() {
@@ -46,10 +53,12 @@ public abstract class BaseFragment extends Fragment {
         getFragmentManager().popBackStack();
 
     }
-    public void lockNavigationView(boolean lock){
+
+    public void lockNavigationView(boolean lock) {
         getBaseActivity().lockNavigationView(lock);
 
     }
+
     public void makeSnackBar(int stringID) {
         BaseActivity activity = (BaseActivity) getActivity();
         activity.makeSnackBar(stringID);

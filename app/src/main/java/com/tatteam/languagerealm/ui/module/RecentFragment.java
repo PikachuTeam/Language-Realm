@@ -41,7 +41,10 @@ public class RecentFragment extends BaseFragment implements FavoriteAdapter.Clic
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(STYLE_ID);
+        setNavHeaderColor(R.color.colorPrimaryDark);
+
     }
+
     @Override
     protected boolean isPhraseFragment() {
         return false;
@@ -65,8 +68,8 @@ public class RecentFragment extends BaseFragment implements FavoriteAdapter.Clic
 
         if (listRecent.size() > 0) noRecent.setVisibility(View.GONE);
         else noRecent.setVisibility(View.VISIBLE);
-        mAdapter = new FavoriteAdapter(getBaseActivity(),listRecent);
-        mAdapter.activity =getBaseActivity();
+        mAdapter = new FavoriteAdapter(getBaseActivity(), listRecent);
+        mAdapter.activity = getBaseActivity();
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter.setmLislistener(this);
@@ -103,10 +106,10 @@ public class RecentFragment extends BaseFragment implements FavoriteAdapter.Clic
     public void onFavoriteChange(int position) {
 
         if (listRecent.get(position).isFavorite > 0) {
-            listRecent.get(position).isFavorite=0;
+            listRecent.get(position).isFavorite = 0;
             makeSnackBar(R.string.removed_from_favorite);
         } else {
-            listRecent.get(position).isFavorite=1;
+            listRecent.get(position).isFavorite = 1;
             makeSnackBar(R.string.added_to_favorite);
         }
 

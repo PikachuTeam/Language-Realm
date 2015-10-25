@@ -1,0 +1,76 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">24dp</dimen>
+    <dimen name="activity_vertical_margin">24dp</dimen>
+    <dimen name="fab_margin">24dp</dimen>
+    <dimen name="nav_header_height">255dp</dimen>
+    <dimen name="nav_header_image_height">240dp</dimen>
+    <dimen name="nav_header_image_width">277.5dp</dimen>
+    <dimen name="app_bar_height">255dp</dimen>
+    <dimen name="margin_1">1.5dp</dimen>
+    <dimen name="margin_2">3dp</dimen>
+    <dimen name="margin_3">4.5dp</dimen>
+    <dimen name="margin_4">6dp</dimen>
+    <dimen name="margin_5">7.5dp</dimen>
+    <dimen name="margin_6">9dp</dimen>
+    <dimen name="margin_7">10.5dp</dimen>
+    <dimen name="margin_8">12dp</dimen>
+    <dimen name="margin_9">13.5dp</dimen>
+    <dimen name="margin_10">15dp</dimen>
+    <dimen name="margin_11">16.5dp</dimen>
+    <dimen name="margin_12">18dp</dimen>
+    <dimen name="margin_13">19.5dp</dimen>
+    <dimen name="margin_14">21dp</dimen>
+    <dimen name="margin_15">22.5dp</dimen>
+    <dimen name="margin_16">24dp</dimen>
+    <dimen name="margin_18">27dp</dimen>
+    <dimen name="margin_20">30dp</dimen>
+    <dimen name="margin_24">36dp</dimen>
+    <dimen name="margin_25">37.5dp</dimen>
+    <dimen name="margin_27">40.5dp</dimen>
+    <dimen name="margin_30">45dp</dimen>
+    <dimen name="margin_33">49.5dp</dimen>
+    <dimen name="margin_35">52.5dp</dimen>
+    <dimen name="margin_40">60dp</dimen>
+    <dimen name="margin_50">75dp</dimen>
+    <dimen name="margin_55">82.5dp</dimen>
+
+    <dimen name="margin_60">90dp</dimen>
+    <dimen name="margin_65">97.5dp</dimen>
+    <dimen name="margin_68">102dp</dimen>
+    <dimen name="margin_100">150dp</dimen>
+    <dimen name="margin_110">165dp</dimen>
+
+    <dimen name="play_size">40.5dp</dimen>
+    <dimen name="text_size_13">19.5sp</dimen>
+    <dimen name="text_size_14">21sp</dimen>
+    <dimen name="text_size_15">22.5sp</dimen>
+    <dimen name="text_size_16">24sp</dimen>
+    <dimen name="text_size_17">25.5sp</dimen>
+    <dimen name="text_size_18">27sp</dimen>
+    <dimen name="text_size_19">28.5sp</dimen>
+    <dimen name="text_size_20">30sp</dimen>
+    <dimen name="text_size_21">31.5sp</dimen>
+    <dimen name="text_size_22">33sp</dimen>
+    <dimen name="text_size_23">34.5sp</dimen>
+    <dimen name="text_size_25">37.5sp</dimen>
+    <dimen name="text_size_26">39sp</dimen>
+    <dimen name="text_size_30">45sp</dimen>
+    <dimen name="text_size_32">48sp</dimen>
+    <dimen name="text_size_35">52.5sp</dimen>
+    <dimen name="text_size_38">57sp</dimen>
+
+
+
+    <dimen name="min_height_search">510dp</dimen>
+
+    <dimen name="text_size_37">55.5sp</dimen>
+
+    <dimen name="fab_tts_size">75dp</dimen>
+    <dimen name="img_nav_size">64.5dp</dimen>
+
+    <dimen name="phrase_star_icon_size">39dp</dimen>
+    <dimen name="collapsing_marginend">96dp</dimen>
+    <dimen name="collapsing_marginstart">72dp</dimen>
+    <dimen name="collapsing_image_minheight">135dp</dimen>
+</resources>

@@ -8,9 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 
 import java.util.ArrayList;
+
+import tatteam.com.app_common.ui.drawable.RippleEffectLight;
 
 
 /**
@@ -49,16 +52,24 @@ public class LetterFullModeAdapter extends RecyclerView.Adapter<LetterFullModeAd
     }
 
     ////////////////////////////////////////////////////////////////
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder  {
         public TextView tvCharacter;
         public CardView cvCharacter;
-
+        public RippleEffectLight item;
         public ViewHolder(View itemView) {
             super(itemView);
 
-            itemView.setOnClickListener(this);
             cvCharacter = (CardView) itemView.findViewById(R.id.card_view);
             tvCharacter = (TextView) itemView.findViewById(R.id.tvCharacter);
+            item = (RippleEffectLight) itemView.findViewById(R.id.grid);
+            item.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+                @Override
+                public void onComplete(RippleView rippleView) {
+                    if (mListener != null) {
+                        mListener.onLetterClick(getAdapterPosition());
+                    }
+                }
+            });
         }
 
         public void setItem(String s) {
@@ -66,13 +77,7 @@ public class LetterFullModeAdapter extends RecyclerView.Adapter<LetterFullModeAd
 
         }
 
-        @Override
-        public void onClick(View v) {
-            if (mListener != null) {
-//                v.setClickable(false);
-                mListener.onLetterClick(getAdapterPosition());
-            }
-        }
+
     }
 
     public interface OnClickLetter {

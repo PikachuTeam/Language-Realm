@@ -32,6 +32,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
 
     private int NAME_ID = R.string.favorite;
     private int STYLE_ID = R.style.AppTheme;
+
     private Toolbar toolbar;
     private RecyclerView mRecyclerView;
     private FavoriteAdapter mAdapter;
@@ -47,6 +48,8 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
         super.onCreate(savedInstanceState);
         createListLetter();
         setTheme(STYLE_ID);
+        setNavHeaderColor(R.color.colorPrimaryDark);
+
     }
 
 

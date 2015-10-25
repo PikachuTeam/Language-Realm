@@ -13,12 +13,16 @@ public class IdiomFragment extends BasePhraseFragment {
 
     private int THEME_ID = R.style.IdiomTheme;
     private int FRAGMENT_NAME_ID = R.string.idiom;
-    private int BANNER_ID= R.drawable.idiom;
-    private String SQL_TABLE_NAME="french_idioms";
+    private int STATUS_BAR_COLOR_ID = R.color.idiom_PrimaryDark;
+    private int BANNER_ID = R.drawable.idiom;
+
+    private String SQL_TABLE_NAME = "french_idioms";
+
     @Override
     protected boolean isPhraseFragment() {
         return true;
     }
+
     @Override
     protected String getSqlTableName() {
         return SQL_TABLE_NAME;
@@ -40,8 +44,14 @@ public class IdiomFragment extends BasePhraseFragment {
     }
 
     @Override
+    protected int getStatusBarColor() {
+        return STATUS_BAR_COLOR_ID;
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setNavHeaderColor(STATUS_BAR_ID);
 
     }
 }

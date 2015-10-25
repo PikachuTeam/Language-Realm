@@ -46,6 +46,7 @@ public abstract class GoogleSearchPhraseFragment extends BaseFragment {
         wvSearch.getSettings().setJavaScriptEnabled(true);
         wvSearch.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         wvSearch.loadUrl(getUrl());
+
     }
 
     public String getUrl() {

@@ -14,6 +14,12 @@ public class ProverbFragment extends BasePhraseFragment {
     private int THEME_ID = R.style.ProverbTheme;
     private int FRAGMENT_NAME_ID = R.string.proverb;
     private int BANNER_ID= R.drawable.proverb;
+    private int STATUS_BAR_COLOR_ID= R.color.proverb_PrimaryDark;
+    @Override
+    protected int getStatusBarColor() {
+        return STATUS_BAR_COLOR_ID;
+    }
+
     private String SQL_TABLE_NAME="french_proverbs";
     @Override
     protected boolean isPhraseFragment() {
@@ -39,9 +45,11 @@ public class ProverbFragment extends BasePhraseFragment {
         return FRAGMENT_NAME_ID;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setNavHeaderColor(STATUS_BAR_ID);
 
     }
 }

@@ -16,16 +16,16 @@ public  class ViewPagerNonSwipe extends ViewPager {
     public ViewPagerNonSwipe(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent event) {
-        // Never allow swiping to switch between pages
-        return false;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        // Never allow swiping to switch between pages
-        return false;
-    }
+//    @Override
+//    public boolean onInterceptTouchEvent(MotionEvent event) {
+//        // Never allow swiping to switch between pages
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        // Never allow swiping to switch between pages
+//        return false;
+//    }
 
 }

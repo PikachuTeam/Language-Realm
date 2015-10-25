@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Language-Realm</string>
+    <string name="app_name">French Realm</string>
+    <string name="welcome">Bonjour !</string>
+
 </resources>

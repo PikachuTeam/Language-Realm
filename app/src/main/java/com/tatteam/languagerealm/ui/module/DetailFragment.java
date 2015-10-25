@@ -21,6 +21,9 @@ import com.tatteam.languagerealm.entity.PhraseEntity;
 
 import java.util.Locale;
 
+import tatteam.com.app_common.AppCommon;
+import tatteam.com.app_common.util.AppSpeaker;
+
 
 public class DetailFragment extends BaseFragment {
     private String SQL_TABLE_NAME;
@@ -42,6 +45,8 @@ public class DetailFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        AppCommon.getInstance().initIfNeeded(getBaseActivity().getApplicationContext());
+        AppSpeaker.getInstance().initIfNeeded(getBaseActivity().getApplicationContext(), Locale.FRENCH);
 
     }
 
@@ -118,7 +123,7 @@ public class DetailFragment extends BaseFragment {
         phraseEntity = new PhraseEntity();
 
         phraseEntity = DataSource.getInstance().getOnePhrase(phrase, SQL_TABLE_NAME);
-        DataSource.getInstance().updateRecent(phrase,SQL_TABLE_NAME);
+        DataSource.getInstance().updateRecent(phrase, SQL_TABLE_NAME);
 
 
     }
@@ -167,45 +172,19 @@ public class DetailFragment extends BaseFragment {
         fabTts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textToSpeech != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        textToSpeech.speak(phrase, TextToSpeech.QUEUE_FLUSH, null, null);
-                    } else textToSpeech.speak(phrase, TextToSpeech.QUEUE_FLUSH, null);
-
-
+                if (AppSpeaker.getInstance().ready()) {
+                    AppSpeaker.getInstance().speak(phrase);
                 }
             }
         });
     }
 
-    @Override
-    public void onResume() {
-
-        super.onResume();
-        try {
-            textToSpeech = new TextToSpeech(getBaseActivity().getApplicationContext(), new TextToSpeech.OnInitListener() {
-                @Override
-                public void onInit(int status) {
-                    if (status != TextToSpeech.ERROR) {
-                        try {
-                            textToSpeech.setLanguage(Locale.FRENCH);
-                            textToSpeech.setSpeechRate(0.8f);
-                        } catch (Exception e) {
-                            fabTts.setVisibility(View.GONE);
-                        }
-                    }
-                }
-            });
-        } catch (Exception ae) {
-        }
-    }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        if (textToSpeech != null) {
-            textToSpeech.stop();
-            textToSpeech.shutdown();
+    public void onStop() {
+        super.onStop();
+        if (AppSpeaker.getInstance().ready()) {
+            AppSpeaker.getInstance().stop();
         }
     }
 }

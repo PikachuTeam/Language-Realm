@@ -2,12 +2,18 @@ package com.tatteam.languagerealm.ui.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.database.DataSource;
+
+import java.util.Locale;
+
+import tatteam.com.app_common.AppCommon;
+import tatteam.com.app_common.util.AppSpeaker;
 
 
 /**
@@ -23,9 +29,15 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        DataSource.getInstance().init(getApplicationContext());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.slang_PrimaryDark));
+        }
         importDatabase();
+        initAppCommon();
+
+        //for text to speech
+        initAppSpeaker();
+
         handler = new android.os.Handler(new android.os.Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -40,6 +52,15 @@ public class SplashActivity extends AppCompatActivity {
         });
         handler.sendEmptyMessageDelayed(0, SPLASH_DURATION);
 
+    }
+
+    private void initAppCommon() {
+        AppCommon.getInstance().initIfNeeded(getApplicationContext());
+        AppCommon.getInstance().increaseLaunchTime();
+    }
+
+    private void initAppSpeaker() {
+        AppSpeaker.getInstance().initIfNeeded(getApplicationContext(), Locale.FRENCH);
     }
 
     @Override
