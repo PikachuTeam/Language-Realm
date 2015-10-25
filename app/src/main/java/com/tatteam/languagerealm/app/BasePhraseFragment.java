@@ -1,5 +1,6 @@
 package com.tatteam.languagerealm.app;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -58,6 +61,7 @@ public abstract class BasePhraseFragment extends BaseFragment {
     protected abstract int getThemeID();
 
     protected abstract int getFragmentNameID();
+
     protected abstract int getStatusBarColor();
 
     @Override
@@ -67,7 +71,7 @@ public abstract class BasePhraseFragment extends BaseFragment {
         IMAGE_BANNER_ID = getBannerID();
         FRAGMENT_NAME_ID = getFragmentNameID();
         THEME_STYLE_ID = getThemeID();
-        STATUS_BAR_ID =getStatusBarColor();
+        STATUS_BAR_ID = getStatusBarColor();
         updateTheme();
     }
 
@@ -220,6 +224,8 @@ public abstract class BasePhraseFragment extends BaseFragment {
                 lvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        searchView.clearFocus();
+
                         DetailFragment detailFragment = new DetailFragment();
                         Bundle bundle = new Bundle();
                         bundle.putString("phrase", listPhraseSearch.get(position).phrase);
@@ -283,6 +289,5 @@ public abstract class BasePhraseFragment extends BaseFragment {
     public RelativeLayout getContentSearch() {
         return contentSearch;
     }
-
 
 }

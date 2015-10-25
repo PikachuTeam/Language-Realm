@@ -54,6 +54,7 @@ public class DetailFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         lockNavigationView(true);
+
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         tvPhrase = (TextView) rootView.findViewById(R.id.tvPhrase);
@@ -69,6 +70,7 @@ public class DetailFragment extends BaseFragment {
 
         return rootView;
     }
+
 
 
     public void setUpToolBar() {
