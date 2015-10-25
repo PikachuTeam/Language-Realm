@@ -153,6 +153,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
 
                                                          break;
                                                      case R.string.more_app:
+                                                         drawerLayout.closeDrawers();
                                                          AppCommon.getInstance().openMoreAppDialog(BaseActivity.this);
                                                          break;
                                                  }
