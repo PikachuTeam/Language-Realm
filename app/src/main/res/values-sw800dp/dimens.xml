@@ -73,4 +73,6 @@
     <dimen name="collapsing_marginend">144dp</dimen>
     <dimen name="collapsing_marginstart">108dp</dimen>
     <dimen name="collapsing_image_minheight">202.5dp</dimen>
+
+    <dimen name="sliding_menu_width">675dp</dimen>
 </resources>
