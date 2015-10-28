@@ -1,11 +1,6 @@
 package com.tatteam.languagerealm.app;
 
-<<<<<<< HEAD
 import android.content.SharedPreferences;
-import android.graphics.drawable.Icon;
-=======
-import android.app.Activity;
->>>>>>> origin/master
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

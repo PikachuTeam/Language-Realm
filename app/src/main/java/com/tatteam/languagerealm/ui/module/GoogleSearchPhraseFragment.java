@@ -68,7 +68,7 @@ public abstract class GoogleSearchPhraseFragment extends BaseFragment {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
-          return false;
+          return true;
         }
     }
 
