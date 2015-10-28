@@ -1,5 +1,6 @@
 package com.tatteam.languagerealm.ui.module;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 
@@ -35,7 +37,7 @@ public class RecentFragment extends BaseFragment implements FavoriteAdapter.Clic
     private RecyclerView.LayoutManager mLayoutManager;
     private RelativeLayout noRecent;
     private int MAX_COUNT = 100;
-
+    private ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,26 +56,55 @@ public class RecentFragment extends BaseFragment implements FavoriteAdapter.Clic
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        listRecent = getListRecent();
+
         lockNavigationView(false);
         View rootView = inflater.inflate(R.layout.fragment_recent, container, false);
-
+        progressBar = (ProgressBar) rootView.findViewById(R.id.progress);
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         noRecent = (RelativeLayout) rootView.findViewById(R.id.non_favorite);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_favorite);
 
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager = new
+
+                LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        if (listRecent.size() > 0) noRecent.setVisibility(View.GONE);
-        else noRecent.setVisibility(View.VISIBLE);
-        mAdapter = new FavoriteAdapter(getBaseActivity(), listRecent);
-        mAdapter.activity = getBaseActivity();
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter.setmLislistener(this);
-        setUpToolBar();
+
+        AsyncTask asyncTask = new AsyncTask() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressBar.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected Object doInBackground(Object[] params) {
+                listRecent = getListRecent();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                super.onPostExecute(o);
+                if (listRecent.size() > 0) noRecent.setVisibility(View.GONE);
+                else noRecent.setVisibility(View.VISIBLE);
+                mAdapter = new
+
+                        FavoriteAdapter(getBaseActivity(), listRecent
+
+                );
+                mAdapter.activity = getBaseActivity();
+
+                mRecyclerView.setAdapter(mAdapter);
+                mAdapter.setmLislistener(RecentFragment.this);
+
+                setUpToolBar();
+                progressBar.setVisibility(View.GONE);
+            }
+        }.execute();
+
+
         return rootView;
 
     }

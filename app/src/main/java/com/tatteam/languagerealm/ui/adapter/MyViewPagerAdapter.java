@@ -12,24 +12,23 @@ import com.tatteam.languagerealm.ui.module.phrasemodule.PhraseFullModePage;
 import com.tatteam.languagerealm.ui.module.phrasemodule.PhraseQuickModePage;
 
 
-public  class MyViewPagerAdapter extends PagerAdapter {
+public class MyViewPagerAdapter extends PagerAdapter {
     private RecyclerView rvPhrase, rvLetter;
     private PhraseInQuickModeAdapter adapterPhrase;
     private RecyclerView.LayoutManager lmPhrase, lmLetter;
     private BasePhraseFragment fragment;
     private BaseActivity activity;
-
-    public BasePage[] myPages;
+    private PhraseQuickModePage phraseQuickModePage;
+    private PhraseFullModePage phraseFullModePage;
 
     public MyViewPagerAdapter(BaseActivity activity, BasePhraseFragment fragment) {
         this.activity = activity;
-        this.fragment =fragment;
-        myPages = new BasePage[]{new PhraseQuickModePage(activity,fragment), new PhraseFullModePage(activity,fragment)};
+        this.fragment = fragment;
     }
 
     @Override
     public int getCount() {
-        return myPages.length;
+        return 2;
     }
 
     @Override
@@ -39,7 +38,16 @@ public  class MyViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View layout = myPages[position].getContent();
+        View layout = null;
+        if (position == 0) {
+            if (phraseQuickModePage == null)
+                phraseQuickModePage = new PhraseQuickModePage(activity, fragment);
+            layout = phraseQuickModePage.getContent();
+        } else {
+            if (phraseFullModePage == null)
+                phraseFullModePage = new PhraseFullModePage(activity, fragment);
+            layout = phraseFullModePage.getContent();
+        }
         container.addView(layout);
         return layout;
     }
@@ -47,11 +55,12 @@ public  class MyViewPagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);
-        BasePage page = myPages[position];
-        page.destroy();
+        if (position == 0) {
+            phraseQuickModePage.destroy();
+        } else {
+            phraseFullModePage.destroy();
+        }
     }
-
-
 
 
 }

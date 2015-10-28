@@ -1,5 +1,6 @@
 package com.tatteam.languagerealm.app;
 
+import android.content.SharedPreferences;
 import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
@@ -62,7 +63,8 @@ public abstract class BasePhraseFragment extends BaseFragment {
     private SearchView searchView;
     private SearchAdapter adapterSearch;
     private ListView lvSearch;
-
+    private SharedPreferences pre;
+    private SharedPreferences.Editor edit;
 
     protected abstract String getSqlTableName();
 
@@ -71,6 +73,7 @@ public abstract class BasePhraseFragment extends BaseFragment {
     protected abstract int getThemeID();
 
     protected abstract int getFragmentNameID();
+
     protected abstract int getStatusBarColor();
 
     @Override
@@ -80,8 +83,12 @@ public abstract class BasePhraseFragment extends BaseFragment {
         IMAGE_BANNER_ID = getBannerID();
         FRAGMENT_NAME_ID = getFragmentNameID();
         THEME_STYLE_ID = getThemeID();
-        STATUS_BAR_ID =getStatusBarColor();
+        STATUS_BAR_ID = getStatusBarColor();
         updateTheme();
+        pre = getBaseActivity().getSharedPreferences("data", getBaseActivity().MODE_PRIVATE);
+        edit = pre.edit();
+
+
     }
 
     public void updateTheme() {
@@ -130,12 +137,22 @@ public abstract class BasePhraseFragment extends BaseFragment {
             pagerAdapter = new MyViewPagerAdapter(getBaseActivity(), this);
         }
         viewPager.setAdapter(pagerAdapter);
+        if (pre.getBoolean("checked", true)) viewPager.setCurrentItem(0);
+        else viewPager.setCurrentItem(1);
+
         viewPager.setPageTransformer(true, new TabletTransformer());
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
                 setUpFloatingButton();
+                if (position == 0) {
+                    edit.putBoolean("checked", true);
+                    edit.commit();
+                } else {
+                    edit.putBoolean("checked", false);
+                    edit.commit();
+                }
             }
 
             @Override

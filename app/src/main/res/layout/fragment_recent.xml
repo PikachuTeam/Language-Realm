@@ -17,10 +17,10 @@
 
 
         <android.support.v7.widget.RecyclerView
-            android:layout_below="@+id/appbar"
             android:id="@+id/recycler_favorite"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/appbar"
             android:layout_gravity="center"
             android:fadeScrollbars="true"
 
@@ -32,11 +32,11 @@
     </RelativeLayout>
 
     <RelativeLayout
-
         android:id="@+id/non_favorite"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:paddingBottom="@dimen/margin_65">
+        android:paddingBottom="@dimen/margin_65"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="fill_parent"
@@ -47,5 +47,17 @@
             android:textColor="?attr/colorPrimary"
             android:textSize="@dimen/text_size_26" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/nav_header_image_width">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="@dimen/margin_100"
+            android:layout_height="@dimen/margin_100" />
     </RelativeLayout>
 </com.tatteam.languagerealm.app.FractionFrameLayout>

@@ -1,5 +1,6 @@
 package com.tatteam.languagerealm.ui.module;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 
@@ -39,10 +41,13 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
     private RecyclerView.LayoutManager mLayoutManager;
     private RelativeLayout noFavorite;
     private LetterEntity[] letterEntities;
+    private ProgressBar progressBar;
+
     @Override
     protected boolean isPhraseFragment() {
         return false;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,20 +69,36 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         noFavorite = (RelativeLayout) rootView.findViewById(R.id.non_favorite);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_favorite);
-
+        progressBar = (ProgressBar) rootView.findViewById(R.id.progress);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        list = getListFavorite();
-        if (list.size() > 0) noFavorite.setVisibility(View.GONE);
-        else noFavorite.setVisibility(View.VISIBLE);
-        mAdapter = new FavoriteAdapter(getBaseActivity(),list);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter.setmLislistener(this);
-        setUpToolBar();
-        return rootView;
 
+        AsyncTask asyncTask = new AsyncTask() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressBar.setVisibility(View.VISIBLE);
+            }
+            @Override
+            protected Object doInBackground(Object[] params) {
+                list = getListFavorite();
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Object o) {
+                super.onPostExecute(o);
+                if (list.size() > 0) noFavorite.setVisibility(View.GONE);
+                else noFavorite.setVisibility(View.VISIBLE);
+                mAdapter = new FavoriteAdapter(getBaseActivity(), list);
+                mRecyclerView.setAdapter(mAdapter);
+                mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                mAdapter.setmLislistener(FavoriteFragment.this);
+                progressBar.setVisibility(View.GONE);
+                setUpToolBar();
+            }
+        }.execute();
+        return rootView;
     }
 
     @Override
@@ -123,7 +144,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
         list = getListFavorite();
 
 
-        mAdapter = new FavoriteAdapter(getBaseActivity(),list);
+        mAdapter = new FavoriteAdapter(getBaseActivity(), list);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setmLislistener(this);
         if (list.size() == 0)

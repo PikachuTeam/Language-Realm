@@ -1,8 +1,11 @@
 package com.tatteam.languagerealm.ui.module.phrasemodule;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 
 import com.tatteam.languagerealm.R;
@@ -35,28 +38,48 @@ public class PhraseQuickModePage extends BasePage implements PhraseInQuickModeAd
 
     private List<LetterEntity> listletter;
     private List<PhraseEntity> listPhrase;
-    public PhraseQuickModePage(BaseActivity activity,BasePhraseFragment fragment) {
-        super(fragment,activity);
+    private ProgressBar progressBar;
+    public PhraseQuickModePage(BaseActivity activity, BasePhraseFragment fragment) {
+        super(fragment, activity);
+        progressBar = (ProgressBar) content.findViewById(R.id.progress);
+        AsyncTask asyncTask = new AsyncTask() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressBar.setVisibility(View.VISIBLE);
+            }
 
+            @Override
+            protected Object doInBackground(Object[] params) {
+                loadDta();
+                return null;
+            }
 
-        loadData();
-        setUpRvLetter();
-        setupRvPhrase();
+            @Override
+            protected void onPostExecute(Object o) {
+                super.onPostExecute(o);
+                setUpRvLetter();
+                setupRvPhrase();
+                progressBar.setVisibility(View.GONE);
+            }
+        }.execute();
+
 
     }
-
 
 
     @Override
     protected int getContentId() {
         return R.layout.page_phrase_quick_mode;
     }
+
+
     public void setUpRvLetter() {
         rvLetter = (RecyclerView) getContent().findViewById(R.id.rv_letter);
         rvLetter.setHasFixedSize(true);
         lmLetter = new LinearLayoutManager(activity);
         rvLetter.setLayoutManager(lmLetter);
-        adapterLetter = new LetterQuickModeAdapter(activity, listletter,fragment.FRAGMENT_NAME_ID);
+        adapterLetter = new LetterQuickModeAdapter(activity, listletter, fragment.FRAGMENT_NAME_ID);
         rvLetter.setAdapter(adapterLetter);
         adapterLetter.setmListener(this);
     }
@@ -71,7 +94,7 @@ public class PhraseQuickModePage extends BasePage implements PhraseInQuickModeAd
         adapterPhrase.setmListener(this);
     }
 
-    public void loadData() {
+    public void loadDta() {
         listletter = new ArrayList<>();
         listPhrase = new ArrayList<>();
         listletter = DataSource.getInstance().getLetters(fragment.SQL_TABLE_NAME);
@@ -83,6 +106,7 @@ public class PhraseQuickModePage extends BasePage implements PhraseInQuickModeAd
         }
 
     }
+
     public boolean listLetterHasSelected() {
         for (int i = 0; i < listletter.size(); i++) {
             if (listletter.get(i).selected) return true;

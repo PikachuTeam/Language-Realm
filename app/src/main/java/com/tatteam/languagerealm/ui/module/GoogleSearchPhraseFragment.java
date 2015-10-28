@@ -19,15 +19,19 @@ public abstract class GoogleSearchPhraseFragment extends BaseFragment {
     private String phrase;
     private WebView wvSearch;
     private Toolbar toolbar;
+    private MyWebViewClient myBrowser;
+
     @Override
     protected boolean isPhraseFragment() {
         return false;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle bundle = this.getArguments();
@@ -41,7 +45,7 @@ public abstract class GoogleSearchPhraseFragment extends BaseFragment {
     }
 
     public void setUpWebView() {
-        MyWebViewClient myBrowser = new MyWebViewClient();
+        myBrowser = new MyWebViewClient();
         wvSearch.setWebViewClient(myBrowser);
         wvSearch.getSettings().setJavaScriptEnabled(true);
         wvSearch.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
@@ -64,7 +68,7 @@ public abstract class GoogleSearchPhraseFragment extends BaseFragment {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
-            return true;
+          return false;
         }
     }
 
@@ -79,7 +83,6 @@ public abstract class GoogleSearchPhraseFragment extends BaseFragment {
                 getFragmentManager().popBackStack();
             }
         });
-
     }
 
     @Override

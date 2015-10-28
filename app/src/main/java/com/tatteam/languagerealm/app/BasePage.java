@@ -19,6 +19,7 @@ public abstract class BasePage {
     protected abstract int getContentId();
 
 
+
     public BasePage(BasePhraseFragment fragment, BaseActivity activity) {
         this(activity, fragment, null);
     }

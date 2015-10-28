@@ -1,12 +1,11 @@
 package com.tatteam.languagerealm.ui.module.phrasemodule;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 
@@ -16,10 +15,7 @@ import com.tatteam.languagerealm.app.BasePage;
 import com.tatteam.languagerealm.app.BasePhraseFragment;
 import com.tatteam.languagerealm.database.DataSource;
 import com.tatteam.languagerealm.entity.LetterEntity;
-import com.tatteam.languagerealm.entity.PhraseEntity;
 import com.tatteam.languagerealm.ui.adapter.LetterFullModeAdapter;
-import com.tatteam.languagerealm.ui.adapter.PhraseInFullModeAdapter;
-import com.tatteam.languagerealm.ui.module.DetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +31,7 @@ public class PhraseFullModePage extends BasePage implements LetterFullModeAdapte
     private RecyclerView.LayoutManager mLMLetter;
     private LetterFullModeAdapter mAdapterFullMode;
     private ArrayList<String> listLetter;
-
-
+    private ProgressBar progressBar;
 
     public RelativeLayout contentLetter, contentPhrase;
 
@@ -44,15 +39,41 @@ public class PhraseFullModePage extends BasePage implements LetterFullModeAdapte
     protected int getContentId() {
         return R.layout.page_phrase_full_mode;
     }
+
+
     public PhraseFullModePage(BaseActivity activity, BasePhraseFragment fragment) {
         super(fragment, activity);
-        contentLetter = (RelativeLayout) content.findViewById(R.id.view_list_letter);
-        contentPhrase = (RelativeLayout) content.findViewById(R.id.view_lisr_phrase);
-        loadLetterInData();
-        setUpRvLetter();
+        progressBar = (ProgressBar) content.findViewById(R.id.progress);
+
+
+        AsyncTask asyncTask = new AsyncTask() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressBar.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected Object doInBackground(Object[] params) {
+                loadLetterInData();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                super.onPostExecute(o);
+                setUpRvLetter();
+                progressBar.setVisibility(View.GONE);
+            }
+        }.execute();
+
+
+
     }
+
     public void setUpRvLetter() {
-        mRvLetter = (RecyclerView) content.findViewById(R.id.recycler_view);
+        contentLetter = (RelativeLayout) content.findViewById(R.id.view_list_letter);
+        mRvLetter = (RecyclerView) content.findViewById(R.id.recycler_view_fullmode);
         mRvLetter.setHasFixedSize(true);
         mLMLetter = new GridLayoutManager(activity, COLUMN_NUMBER);
         mRvLetter.setLayoutManager(mLMLetter);
@@ -60,6 +81,7 @@ public class PhraseFullModePage extends BasePage implements LetterFullModeAdapte
         mAdapterFullMode.setLetterClickListener(this);
         mRvLetter.setAdapter(mAdapterFullMode);
     }
+
     public void loadLetterInData() {
         listLetter = new ArrayList<>();
         List<LetterEntity> list = DataSource.getInstance().getLetters(fragment.SQL_TABLE_NAME);
@@ -67,6 +89,7 @@ public class PhraseFullModePage extends BasePage implements LetterFullModeAdapte
             listLetter.add(list.get(i).letter);
         }
     }
+
     @Override
     public void onLetterClick(int position) {
 
@@ -76,13 +99,10 @@ public class PhraseFullModePage extends BasePage implements LetterFullModeAdapte
         bundle.putString("phrase_kind", fragment.SQL_TABLE_NAME);
         bundle.putString("phrase_kind_name", activity.getResources().getString(fragment.FRAGMENT_NAME_ID));
         listPhraseFullModeFragment.setArguments(bundle);
-        fragment.replaceFragment(fragment.getBaseActivity().getFragmentManager(),listPhraseFullModeFragment, listLetter.get(position),listLetter.get(position));
-
-
+        fragment.replaceFragment(fragment.getBaseActivity().getFragmentManager(), listPhraseFullModeFragment, listLetter.get(position), listLetter.get(position));
 
 
     }
-
 
 
 }
