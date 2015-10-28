@@ -18,7 +18,7 @@ public class ProverbFragment extends BasePhraseFragment {
         return STATUS_BAR_COLOR_ID;
     }
 
-    private String SQL_TABLE_NAME="french_proverbs";
+    private String SQL_TABLE_NAME="proverbs";
     @Override
     protected boolean isPhraseFragment() {
         return true;

@@ -9,10 +9,12 @@ import com.tatteam.languagerealm.app.BasePhraseFragment;
  * Created by Shu on 10/5/2015.
  */
 public class SlangFragment extends BasePhraseFragment {
+
+
     private int THEME_ID = R.style.SlangTheme;
     private int FRAGMENT_NAME_ID = R.string.slang;
     private int BANNER_ID = R.drawable.slang;
-    private String SQL_TABLE_NAME = "french_slang";
+    private String SQL_TABLE_NAME = "slang";
     private int STATUS_BAR_COLOR_ID= R.color.slang_PrimaryDark;
     @Override
     protected int getStatusBarColor() {

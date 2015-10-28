@@ -124,15 +124,15 @@ public class DataSource {
 
     public List<PhraseEntity> getListFavorite() {
         Cursor cursor = sqLiteDatabase.rawQuery("    SELECT  *\n" +
-                "    FROM french_slang\n" +
+                "    FROM  slang\n" +
                 "    WHERE isFavorite>0\n" +
                 "    UNION ALL\n" +
                 "    SELECT *\n" +
-                "    FROM french_idioms\n" +
+                "    FROM  idioms\n" +
                 "    WHERE isFavorite>0\n" +
                 "    UNION ALL\n" +
                 "    SELECT *\n" +
-                "    FROM french_proverbs\n" +
+                "    FROM  proverbs\n" +
                 "    WHERE isFavorite>0\n" +
                 "    order by letter", null);
         List<PhraseEntity> list = new ArrayList<>();
@@ -157,45 +157,45 @@ public class DataSource {
         String sql = "";
         switch (table) {
 
-            case "french_slang":
+            case " slang":
                 sql = "    SELECT  *\n" +
-                        "    FROM french_slang\n" +
+                        "    FROM  slang\n" +
                         "    WHERE phrase like ?\n" +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
-                        "    FROM french_idioms\n" +
+                        "    FROM  idioms\n" +
                         "    WHERE phrase like ?\n" +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
-                        "    FROM french_proverbs\n" +
+                        "    FROM  proverbs\n" +
                         "    WHERE phrase like ?\n" +
                         "    order by letter";
                 break;
-            case "french_idioms":
+            case " idioms":
                 sql = "    SELECT  *\n" +
-                        "    FROM french_idioms\n" +
+                        "    FROM  idioms\n" +
                         "    WHERE phrase like ?\n" +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
-                        "    FROM french_proverbs\n" +
+                        "    FROM  proverbs\n" +
                         "    WHERE phrase like ?\n" +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
-                        "    FROM french_slang\n" +
+                        "    FROM  slang\n" +
                         "    WHERE phrase like ?\n" +
                         "    order by letter";
                 break;
-            case "french_proverbs":
+            case " proverbs":
                 sql = "    SELECT  *\n" +
-                        "    FROM french_proverbs\n" +
+                        "    FROM  proverbs\n" +
                         "    WHERE phrase like ?\n" +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
-                        "    FROM french_slang\n" +
+                        "    FROM  slang\n" +
                         "    WHERE phrase like ?\n" +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
-                        "    FROM french_idioms\n" +
+                        "    FROM  idioms\n" +
                         "    WHERE phrase like ?\n" +
                         "    order by letter";
                 break;
@@ -223,14 +223,14 @@ public class DataSource {
 
     public List<PhraseEntity> getListRecent(int MAX_COUNT) {
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT  *\n" +
-                " FROM french_slang WHERE isRecent>0\n" +
+                " FROM  slang WHERE isRecent>0\n" +
                 " UNION ALL\n" +
                 " SELECT *\n" +
-                " FROM french_idioms\n" +
+                " FROM  idioms\n" +
                 " WHERE isRecent>0\n" +
                 " UNION ALL\n" +
                 " SELECT *\n" +
-                " FROM french_proverbs\n" +
+                " FROM  proverbs\n" +
                 " WHERE isRecent>0\n" +
                 "order by isRecent desc limit ?", new String[]{MAX_COUNT + ""});
         List<PhraseEntity> list = new ArrayList<>();
@@ -264,14 +264,14 @@ public class DataSource {
     public int getMaxRecent() {
         int max;
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT  *\n" +
-                " FROM french_slang WHERE isRecent>0\n" +
+                " FROM  slang WHERE isRecent>0\n" +
                 " UNION ALL\n" +
                 " SELECT *\n" +
-                " FROM french_idioms\n" +
+                " FROM  idioms\n" +
                 " WHERE isRecent>0\n" +
                 " UNION ALL\n" +
                 " SELECT *\n" +
-                " FROM french_proverbs\n" +
+                " FROM  proverbs\n" +
                 " WHERE isRecent>0\n" +
                 "order by isRecent desc limit 1\n", null);
         if (cursor.getCount() == 0) return 0;

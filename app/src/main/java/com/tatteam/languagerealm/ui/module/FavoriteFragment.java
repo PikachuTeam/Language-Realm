@@ -107,13 +107,13 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
         bundle.putString("phrase", list.get(position).phrase);
         switch (list.get(position).kind_ID) {
             case R.string.slang:
-                bundle.putString("phrase_kind", "french_slang");
+                bundle.putString("phrase_kind", "slang");
                 break;
             case R.string.idiom:
-                bundle.putString("phrase_kind", "french_idioms");
+                bundle.putString("phrase_kind", "idioms");
                 break;
             case R.string.proverb:
-                bundle.putString("phrase_kind", "french_proverbs");
+                bundle.putString("phrase_kind", "proverbs");
                 break;
         }
         bundle.putString("phrase_kind_name", getResources().getString(list.get(position).kind_ID));
@@ -129,13 +129,13 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
 
         switch (list.get(position).kind_ID) {
             case R.string.slang:
-                DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "french_slang");
+                DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "slang");
                 break;
             case R.string.idiom:
-                DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "french_idioms");
+                DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "idioms");
                 break;
             case R.string.proverb:
-                DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "french_proverbs");
+                DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "proverbs");
                 break;
         }
         list.remove(position);

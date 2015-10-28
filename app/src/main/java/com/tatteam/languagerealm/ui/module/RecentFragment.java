@@ -3,7 +3,6 @@ package com.tatteam.languagerealm.ui.module;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -114,13 +113,13 @@ public class RecentFragment extends BaseFragment implements FavoriteAdapter.Clic
         bundle.putString("phrase", listRecent.get(position).phrase);
         switch (listRecent.get(position).kind_ID) {
             case R.string.slang:
-                bundle.putString("phrase_kind", "french_slang");
+                bundle.putString("phrase_kind", "slang");
                 break;
             case R.string.idiom:
-                bundle.putString("phrase_kind", "french_idioms");
+                bundle.putString("phrase_kind", "idioms");
                 break;
             case R.string.proverb:
-                bundle.putString("phrase_kind", "french_proverbs");
+                bundle.putString("phrase_kind", "proverbs");
                 break;
         }
         bundle.putString("phrase_kind_name", getResources().getString(listRecent.get(position).kind_ID));
@@ -144,13 +143,13 @@ public class RecentFragment extends BaseFragment implements FavoriteAdapter.Clic
 
         switch (listRecent.get(position).kind_ID) {
             case R.string.slang:
-                DataSource.getInstance().changeFavoritePhrase(listRecent.get(position).phrase, "french_slang");
+                DataSource.getInstance().changeFavoritePhrase(listRecent.get(position).phrase, "slang");
                 break;
             case R.string.idiom:
-                DataSource.getInstance().changeFavoritePhrase(listRecent.get(position).phrase, "french_idioms");
+                DataSource.getInstance().changeFavoritePhrase(listRecent.get(position).phrase, "idioms");
                 break;
             case R.string.proverb:
-                DataSource.getInstance().changeFavoritePhrase(listRecent.get(position).phrase, "french_proverbs");
+                DataSource.getInstance().changeFavoritePhrase(listRecent.get(position).phrase, "proverbs");
                 break;
         }
         mAdapter.notifyDataSetChanged();

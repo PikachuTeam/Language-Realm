@@ -16,7 +16,7 @@ public class IdiomFragment extends BasePhraseFragment {
     private int STATUS_BAR_COLOR_ID = R.color.idiom_PrimaryDark;
     private int BANNER_ID = R.drawable.idiom;
 
-    private String SQL_TABLE_NAME = "french_idioms";
+    private String SQL_TABLE_NAME = "idioms";
 
     @Override
     protected boolean isPhraseFragment() {

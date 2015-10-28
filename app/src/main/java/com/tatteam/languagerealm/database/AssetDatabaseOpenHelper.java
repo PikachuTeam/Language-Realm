@@ -13,7 +13,7 @@ import java.io.OutputStream;
  * Created by ThanhNH on 1/31/2015.
  */
 public class AssetDatabaseOpenHelper {
-    private static final String DB_NAME = "french.db";
+    private static final String DB_NAME = "phrase.db";
 
     private Context context;
 
