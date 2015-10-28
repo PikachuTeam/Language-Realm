@@ -1,13 +1,18 @@
 package com.tatteam.languagerealm.ui.module.phrasemodule;
 
+<<<<<<< HEAD
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+=======
+import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+>>>>>>> origin/master
 import android.widget.RelativeLayout;
-
 
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;

@@ -1,5 +1,6 @@
 package com.tatteam.languagerealm.ui.activity;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 
 import com.tatteam.languagerealm.app.BaseActivity;
@@ -17,5 +18,15 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void addFragmentContent() {
+        FragmentManager manager = getFragmentManager();
+        if (manager.getBackStackEntryCount() == 0) {
+            super.addFragmentContent();
+        } else {
+            manager.popBackStack(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
     }
 }

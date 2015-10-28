@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseFragment;
 import com.tatteam.languagerealm.database.DataSource;
@@ -55,6 +54,7 @@ public class DetailFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         lockNavigationView(true);
+
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         tvPhrase = (TextView) rootView.findViewById(R.id.tvPhrase);
@@ -70,6 +70,7 @@ public class DetailFragment extends BaseFragment {
 
         return rootView;
     }
+
 
 
     public void setUpToolBar() {

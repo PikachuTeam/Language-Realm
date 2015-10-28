@@ -2,7 +2,6 @@ package com.tatteam.languagerealm.ui.module.phrasemodule.phrase;
 
 import android.os.Bundle;
 
-
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BasePhraseFragment;
 

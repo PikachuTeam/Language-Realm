@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 
-
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;
 import com.tatteam.languagerealm.app.BaseFragment;

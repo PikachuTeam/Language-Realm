@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.entity.LetterEntity;
 import com.tatteam.languagerealm.entity.PhraseEntity;

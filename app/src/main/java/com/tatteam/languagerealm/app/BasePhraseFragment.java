@@ -1,7 +1,11 @@
 package com.tatteam.languagerealm.app;
 
+<<<<<<< HEAD
 import android.content.SharedPreferences;
 import android.graphics.drawable.Icon;
+=======
+import android.app.Activity;
+>>>>>>> origin/master
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,30 +17,20 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.animation.RotateAnimation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.ToxicBakery.viewpager.transforms.AccordionTransformer;
-import com.ToxicBakery.viewpager.transforms.CubeOutTransformer;
-import com.ToxicBakery.viewpager.transforms.DepthPageTransformer;
-import com.ToxicBakery.viewpager.transforms.FlipHorizontalTransformer;
-import com.ToxicBakery.viewpager.transforms.ForegroundToBackgroundTransformer;
-import com.ToxicBakery.viewpager.transforms.RotateUpTransformer;
-import com.ToxicBakery.viewpager.transforms.ScaleInOutTransformer;
 import com.ToxicBakery.viewpager.transforms.TabletTransformer;
-import com.ToxicBakery.viewpager.transforms.ZoomOutSlideTransformer;
 import com.tatteam.languagerealm.R;
-import com.tatteam.languagerealm.app.BaseFragment;
 import com.tatteam.languagerealm.database.DataSource;
 import com.tatteam.languagerealm.entity.PhraseEntity;
 import com.tatteam.languagerealm.ui.adapter.MyViewPagerAdapter;
 import com.tatteam.languagerealm.ui.adapter.SearchAdapter;
 import com.tatteam.languagerealm.ui.module.DetailFragment;
-import com.tatteam.languagerealm.ui.module.phrasemodule.PhraseFullModePage;
 
 import java.util.List;
 
@@ -250,6 +244,8 @@ public abstract class BasePhraseFragment extends BaseFragment {
                 lvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        searchView.clearFocus();
+
                         DetailFragment detailFragment = new DetailFragment();
                         Bundle bundle = new Bundle();
                         bundle.putString("phrase", listPhraseSearch.get(position).phrase);
@@ -313,6 +309,5 @@ public abstract class BasePhraseFragment extends BaseFragment {
     public RelativeLayout getContentSearch() {
         return contentSearch;
     }
-
 
 }

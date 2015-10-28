@@ -5,7 +5,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 
 import com.tatteam.languagerealm.R;
 
@@ -15,6 +14,7 @@ import com.tatteam.languagerealm.R;
  */
 public abstract class BaseFragment extends Fragment {
     private boolean isPhraseFragment;
+
     protected abstract boolean isPhraseFragment();
 
     @Override
@@ -42,7 +42,10 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public void setNavHeaderColor(int id) {
-        getBaseActivity().getBgHeader().setBackgroundColor(getResources().getColor(id));
+        try {
+            getBaseActivity().getBgHeader().setBackgroundColor(getResources().getColor(id));
+        } catch (Exception ex) {
+        }
     }
 
     public BaseActivity getBaseActivity() {

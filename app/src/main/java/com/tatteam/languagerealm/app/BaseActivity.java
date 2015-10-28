@@ -1,6 +1,5 @@
 package com.tatteam.languagerealm.app;
 
-import android.animation.ObjectAnimator;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -8,18 +7,18 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.entity.NavEntity;
 import com.tatteam.languagerealm.ui.adapter.NavAdapter;
 import com.tatteam.languagerealm.ui.module.FavoriteFragment;
 import com.tatteam.languagerealm.ui.module.RecentFragment;
-import com.tatteam.languagerealm.ui.module.phrasemodule.PhraseFullModePage;
 import com.tatteam.languagerealm.ui.module.phrasemodule.phrase.IdiomFragment;
 import com.tatteam.languagerealm.ui.module.phrasemodule.phrase.ProverbFragment;
 import com.tatteam.languagerealm.ui.module.phrasemodule.phrase.SlangFragment;
@@ -35,6 +34,8 @@ import tatteam.com.app_common.util.CloseAppHandler;
  * Created by Shu on 10/4/2015.
  */
 public abstract class BaseActivity extends AppCompatActivity implements CloseAppHandler.OnCloseAppListener {
+    private static final boolean ADS_ENABLE = true;
+
     private DrawerLayout drawerLayout;
     private CloseAppHandler closeAppHandler;
 
@@ -42,6 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
     private RelativeLayout bgHeader;
     private NavEntity[] listNavItem;
     private NavAdapter mAdapter;
+    private AdView mAdView;
 
     protected abstract BasePhraseFragment getFragmentContent();
 
@@ -57,8 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
         addFragmentContent();
         closeAppHandler = new CloseAppHandler(this);
         closeAppHandler.setListener(this);
-
-
+        setupAdView();
     }
 
 
@@ -84,7 +85,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
     }
 
 
-    private void addFragmentContent() {
+    protected void addFragmentContent() {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         BasePhraseFragment fragment = getFragmentContent();
         transaction.add(R.id.main_content, fragment, fragment.getClass().getName());
@@ -208,6 +209,52 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
     @Override
     public void onReallyWantToCloseApp() {
         finish();
-
     }
+
+    private void setupAdView() {
+        mAdView = (AdView) findViewById(R.id.adView);
+        if (ADS_ENABLE) {
+            mAdView.setVisibility(View.VISIBLE);
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                }
+
+                @Override
+                public void onAdFailedToLoad(int errorCode) {
+                    super.onAdFailedToLoad(errorCode);
+                    mAdView.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onAdLeftApplication() {
+                    super.onAdLeftApplication();
+                }
+
+                @Override
+                public void onAdOpened() {
+                    super.onAdOpened();
+                }
+
+                @Override
+                public void onAdLoaded() {
+                    super.onAdLoaded();
+                    mAdView.setVisibility(View.VISIBLE);
+                }
+            });
+            this.loadADS();
+        } else {
+            mAdView.setVisibility(View.GONE);
+        }
+    }
+
+    public void loadADS() {
+        if (ADS_ENABLE && mAdView != null) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+    }
+
+
 }

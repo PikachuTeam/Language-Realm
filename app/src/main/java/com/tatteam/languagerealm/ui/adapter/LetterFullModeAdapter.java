@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 
