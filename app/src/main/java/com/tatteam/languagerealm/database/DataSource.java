@@ -157,50 +157,50 @@ public class DataSource {
         String sql = "";
         switch (table) {
 
-            case " slang":
-                sql = "    SELECT  *\n" +
+            case "slang":
+                sql ="    SELECT  *\n" +
                         "    FROM  slang\n" +
-                        "    WHERE phrase like ?\n" +
+                        "    WHERE phrase like ? " +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
                         "    FROM  idioms\n" +
-                        "    WHERE phrase like ?\n" +
+                        "    WHERE phrase like ? " +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
                         "    FROM  proverbs\n" +
-                        "    WHERE phrase like ?\n" +
+                        "    WHERE phrase like ? " +
                         "    order by letter";
                 break;
-            case " idioms":
+            case "idioms":
                 sql = "    SELECT  *\n" +
                         "    FROM  idioms\n" +
-                        "    WHERE phrase like ?\n" +
+                        "    WHERE phrase like ? " +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
                         "    FROM  proverbs\n" +
-                        "    WHERE phrase like ?\n" +
+                        "    WHERE phrase like ? " +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
                         "    FROM  slang\n" +
-                        "    WHERE phrase like ?\n" +
+                        "    WHERE phrase like ? " +
                         "    order by letter";
                 break;
-            case " proverbs":
+            case "proverbs":
                 sql = "    SELECT  *\n" +
                         "    FROM  proverbs\n" +
-                        "    WHERE phrase like ?\n" +
+                        "    WHERE phrase like ? " +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
                         "    FROM  slang\n" +
-                        "    WHERE phrase like ?\n" +
+                        "    WHERE phrase like ? " +
                         "    UNION ALL\n" +
                         "    SELECT *\n" +
                         "    FROM  idioms\n" +
-                        "    WHERE phrase like ?\n" +
+                        "    WHERE phrase like ? " +
                         "    order by letter";
                 break;
         }
-
+        sql=sql+"";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{query + "%", query + "%", query + "%"});
         List<PhraseEntity> list = new ArrayList<>();
         if (cursor.getCount() == 0) return list;

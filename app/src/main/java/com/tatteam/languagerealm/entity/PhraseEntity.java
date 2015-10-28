@@ -24,8 +24,8 @@ public class PhraseEntity {
 
 
     public void setSQLTable(int i) {
-        if (i == 1) sqlTableName = "french_slang";
-        else if (i == 2) sqlTableName = "french_idioms";
-        else sqlTableName = "french_proverbs";
+        if (i == 1) sqlTableName = "slang";
+        else if (i == 2) sqlTableName = "idioms";
+        else sqlTableName = "proverbs";
     }
 }
