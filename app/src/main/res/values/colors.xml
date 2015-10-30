@@ -2,9 +2,9 @@
 <resources>
 
     //App color
-    <color name="colorPrimary">#5c5c5c</color>
-    <color name="colorPrimaryLight">#969696</color>
-    <color name="colorPrimaryDark">#414141</color>
+    <color name="colorPrimary">#484848</color>
+    <color name="colorPrimaryLight">#808080</color>
+    <color name="colorPrimaryDark">#333333</color>
     <color name="colorAccent">#e9484b</color>
 
     <color name="nav_selected">#dedddd</color>
