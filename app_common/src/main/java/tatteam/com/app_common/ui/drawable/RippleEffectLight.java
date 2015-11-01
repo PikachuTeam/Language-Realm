@@ -26,8 +26,8 @@ public class RippleEffectLight extends RippleView {
     }
 
     private void setRippleEffect() {
-        setRippleColor(R.color.drawable_ripple_effect_light);
-        setRippleAlpha(150);
+        setRippleColor(R.color.white_highligt);
+        setRippleAlpha(90);
         setRippleDuration(80);
 //        setRippleType(RippleType.DOUBLE);
 //        setZooming(true);

@@ -79,11 +79,13 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
                 super.onPreExecute();
                 progressBar.setVisibility(View.VISIBLE);
             }
+
             @Override
             protected Object doInBackground(Object[] params) {
                 list = getListFavorite();
                 return null;
             }
+
             @Override
             protected void onPostExecute(Object o) {
                 super.onPostExecute(o);

@@ -26,8 +26,8 @@ import tatteam.com.app_common.ui.drawable.RippleEffectDark;
  */
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
     public Context activity;
-    private ClickListener mlisListener;
     public List<PhraseEntity> list;
+    private ClickListener mlisListener;
 
     public FavoriteAdapter(BaseActivity activity, List<PhraseEntity> list) {
         this.activity = activity;
@@ -79,8 +79,18 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         return list.size();
     }
 
+    public void setmLislistener(ClickListener mlisListener) {
+        this.mlisListener = mlisListener;
+    }
 
-    class ViewHolder extends RecyclerView.ViewHolder  {
+    public interface ClickListener {
+        void onPhraseClick(int position);
+
+        void onFavoriteChange(int position);
+
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvTitle;
         public TextView tvMeaning;
         public CardView item_favorite_character;
@@ -126,17 +136,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         }
 
 
-    }
-
-    public interface ClickListener {
-        void onPhraseClick(int position);
-
-        void onFavoriteChange(int position);
-
-    }
-
-    public void setmLislistener(ClickListener mlisListener) {
-        this.mlisListener = mlisListener;
     }
 }
 

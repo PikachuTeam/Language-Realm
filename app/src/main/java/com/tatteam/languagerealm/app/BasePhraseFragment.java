@@ -36,17 +36,13 @@ public abstract class BasePhraseFragment extends BaseFragment {
     public int STATUS_BAR_ID;
     public int IMAGE_BANNER_ID;
     public String SQL_TABLE_NAME;
-
+    public FloatingActionButton fabSwitchMode;
+    public ViewPager viewPager;
+    public MyViewPagerAdapter pagerAdapter;
     private List<PhraseEntity> listPhraseSearch;
-
     private Toolbar toolbar;
     private ImageView banner;
     private RelativeLayout contentSearch, listResult, dialogNoResult, backSearch;
-    public FloatingActionButton fabSwitchMode;
-
-    public ViewPager viewPager;
-    public MyViewPagerAdapter pagerAdapter;
-
     private SearchView searchView;
     private SearchAdapter adapterSearch;
     private ListView lvSearch;

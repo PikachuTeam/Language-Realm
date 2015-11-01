@@ -31,11 +31,11 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/non_favorite"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:paddingBottom="@dimen/margin_65">
+        android:paddingBottom="@dimen/margin_65"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="fill_parent"

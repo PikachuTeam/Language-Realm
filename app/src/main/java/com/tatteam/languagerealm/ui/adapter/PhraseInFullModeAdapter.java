@@ -27,8 +27,8 @@ import tatteam.com.app_common.ui.drawable.RippleEffectDark;
  */
 public class PhraseInFullModeAdapter extends RecyclerView.Adapter<PhraseInFullModeAdapter.ViewHolder> {
     public Context activity;
-    private ClickListener mlisListener;
     public List<PhraseEntity> list;
+    private ClickListener mlisListener;
 
     public PhraseInFullModeAdapter(BaseActivity activity, List<PhraseEntity> list) {
         this.activity = activity;
@@ -58,10 +58,23 @@ public class PhraseInFullModeAdapter extends RecyclerView.Adapter<PhraseInFullMo
         }
 
     }
+
     @Override
     public int getItemCount() {
         return list.size();
     }
+
+    public void setmLislistener(ClickListener mlisListener) {
+        this.mlisListener = mlisListener;
+    }
+
+    public interface ClickListener {
+        void onPhraseClick(int position);
+
+        void onFavoriteChange(int position);
+
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView tvTitle;
         public TextView tvMeaning;
@@ -88,7 +101,7 @@ public class PhraseInFullModeAdapter extends RecyclerView.Adapter<PhraseInFullMo
                 @Override
                 public void onComplete(RippleView rippleView) {
                     if (rippleView == phrase_item)
-                    mlisListener.onPhraseClick(getAdapterPosition());
+                        mlisListener.onPhraseClick(getAdapterPosition());
                 }
             });
 
@@ -104,17 +117,6 @@ public class PhraseInFullModeAdapter extends RecyclerView.Adapter<PhraseInFullMo
 
             }
         }
-    }
-
-    public interface ClickListener {
-        void onPhraseClick(int position);
-
-        void onFavoriteChange(int position);
-
-    }
-
-    public void setmLislistener(ClickListener mlisListener) {
-        this.mlisListener = mlisListener;
     }
 }
 

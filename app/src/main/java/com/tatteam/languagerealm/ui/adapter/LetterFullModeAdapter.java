@@ -50,11 +50,20 @@ public class LetterFullModeAdapter extends RecyclerView.Adapter<LetterFullModeAd
         return listLetter.size();
     }
 
+    public void setLetterClickListener(OnClickLetter mlisListener) {
+        this.mListener = mlisListener;
+    }
+
+    public interface OnClickLetter {
+        public void onLetterClick(int position);
+    }
+
     ////////////////////////////////////////////////////////////////
-    class ViewHolder extends RecyclerView.ViewHolder  {
+    class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvCharacter;
         public CardView cvCharacter;
         public RippleEffectLight item;
+
         public ViewHolder(View itemView) {
             super(itemView);
 
@@ -77,13 +86,5 @@ public class LetterFullModeAdapter extends RecyclerView.Adapter<LetterFullModeAd
         }
 
 
-    }
-
-    public interface OnClickLetter {
-        public void onLetterClick(int position);
-    }
-
-    public void setLetterClickListener(OnClickLetter mlisListener) {
-        this.mListener = mlisListener;
     }
 }

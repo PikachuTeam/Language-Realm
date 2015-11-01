@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tatteam.com.app_common.ui.drawable.RippleEffectLight xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
     android:id="@+id/grid"
+    android:layout_width="wrap_content"
 
     android:layout_height="wrap_content">
 
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content">
-
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/card_view"
-                android:layout_width="@dimen/margin_60"
-                android:layout_height="@dimen/margin_100"
-                card_view:cardBackgroundColor="?attr/colorPrimary"
-                card_view:cardCornerRadius="@dimen/margin_1"
-                card_view:cardElevation="@dimen/margin_3"
-                card_view:cardUseCompatPadding="true">
+        android:layout_height="wrap_content">
 
 
-                <TextView
-                    android:id="@+id/tvCharacter"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="A"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_35" />
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="@dimen/margin_60"
+            android:layout_height="@dimen/margin_100"
+            card_view:cardBackgroundColor="?attr/colorPrimary"
+            card_view:cardCornerRadius="@dimen/margin_1"
+            card_view:cardElevation="@dimen/margin_3"
+            card_view:cardUseCompatPadding="true">
 
 
-            </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/tvCharacter"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="A"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_35" />
 
 
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
 
 </tatteam.com.app_common.ui.drawable.RippleEffectLight>

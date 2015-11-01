@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:elevation="@dimen/margin_2"
-    android:theme="@style/AppTheme.AppBarOverlay">
+    android:theme="@style/AppTheme.AppBarOverlay"
+    app:elevation="@dimen/margin_2">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:paddingRight="@dimen/margin_10"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        android:paddingRight="@dimen/margin_10"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 </android.support.design.widget.AppBarLayout>

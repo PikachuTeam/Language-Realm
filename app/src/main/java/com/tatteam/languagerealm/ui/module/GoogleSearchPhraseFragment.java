@@ -64,15 +64,6 @@ public abstract class GoogleSearchPhraseFragment extends BaseFragment {
         return url;
     }
 
-    private class MyWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-          return true;
-        }
-    }
-
-
     public void setUpToolBar() {
         getBaseActivity().setSupportActionBar(toolbar);
         toolbar.setTitle(phrase);
@@ -91,6 +82,14 @@ public abstract class GoogleSearchPhraseFragment extends BaseFragment {
             wvSearch.goBack();
         } else {
             super.onBackPressed();
+        }
+    }
+
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
         }
     }
 

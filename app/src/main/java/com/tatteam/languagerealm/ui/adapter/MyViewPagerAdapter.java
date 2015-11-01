@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tatteam.languagerealm.app.BaseActivity;
-import com.tatteam.languagerealm.app.BasePage;
 import com.tatteam.languagerealm.app.BasePhraseFragment;
 import com.tatteam.languagerealm.ui.module.phrasemodule.PhraseFullModePage;
 import com.tatteam.languagerealm.ui.module.phrasemodule.PhraseQuickModePage;

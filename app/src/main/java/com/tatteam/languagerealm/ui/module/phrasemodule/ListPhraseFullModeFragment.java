@@ -60,7 +60,7 @@ public class ListPhraseFullModeFragment extends BaseFragment implements PhraseIn
 
     public void setUpToolBar(View rootView) {
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-        toolbar.setTitle(FRAGMENT_NAME+" - "+LETTER);
+        toolbar.setTitle(FRAGMENT_NAME + " - " + LETTER);
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

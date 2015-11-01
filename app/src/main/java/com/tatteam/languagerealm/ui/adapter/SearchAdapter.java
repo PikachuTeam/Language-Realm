@@ -19,12 +19,10 @@ import java.util.List;
  * Created by Shu on 10/17/2015.
  */
 public class SearchAdapter extends BaseAdapter {
+    private static LayoutInflater inflater = null;
     private List<PhraseEntity> list;
     private ClickListener mlisListener;
-
     private Context context;
-
-    private static LayoutInflater inflater = null;
 
     public SearchAdapter(BaseActivity mainActivity, List<PhraseEntity> list) {
         // TODO Auto-generated constructor stub
@@ -51,12 +49,6 @@ public class SearchAdapter extends BaseAdapter {
         // TODO Auto-generated method stub
         return position;
     }
-
-    public class Holder {
-        TextView tittle;
-        ImageView icon;
-    }
-
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -85,13 +77,18 @@ public class SearchAdapter extends BaseAdapter {
         return rowView;
     }
 
+    public void setmLislistener(ClickListener mlisListener) {
+        this.mlisListener = mlisListener;
+    }
+
     public interface ClickListener {
         void onPhraseClick(int position);
 
 
     }
 
-    public void setmLislistener(ClickListener mlisListener) {
-        this.mlisListener = mlisListener;
+    public class Holder {
+        TextView tittle;
+        ImageView icon;
     }
 }

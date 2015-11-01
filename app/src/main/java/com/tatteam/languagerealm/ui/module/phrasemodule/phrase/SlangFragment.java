@@ -15,11 +15,13 @@ public class SlangFragment extends BasePhraseFragment {
     private int FRAGMENT_NAME_ID = R.string.slang;
     private int BANNER_ID = R.drawable.slang;
     private String SQL_TABLE_NAME = "slang";
-    private int STATUS_BAR_COLOR_ID= R.color.slang_PrimaryDark;
+    private int STATUS_BAR_COLOR_ID = R.color.slang_PrimaryDark;
+
     @Override
     protected int getStatusBarColor() {
         return STATUS_BAR_COLOR_ID;
     }
+
     @Override
     protected boolean isPhraseFragment() {
         return true;

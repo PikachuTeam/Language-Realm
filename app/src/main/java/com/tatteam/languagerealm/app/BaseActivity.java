@@ -8,12 +8,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.entity.NavEntity;
 import com.tatteam.languagerealm.ui.adapter.NavAdapter;
@@ -26,6 +24,7 @@ import com.tatteam.languagerealm.ui.module.phrasemodule.phrase.SlangFragment;
 import java.util.Locale;
 
 import tatteam.com.app_common.AppCommon;
+import tatteam.com.app_common.ads.AdsSmallBannerHandler;
 import tatteam.com.app_common.util.AppSpeaker;
 import tatteam.com.app_common.util.CloseAppHandler;
 
@@ -38,12 +37,12 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
 
     private DrawerLayout drawerLayout;
     private CloseAppHandler closeAppHandler;
+    private AdsSmallBannerHandler adsHandler;
 
     private ListView lvNav;
     private RelativeLayout bgHeader;
     private NavEntity[] listNavItem;
     private NavAdapter mAdapter;
-    private AdView mAdView;
 
     protected abstract BasePhraseFragment getFragmentContent();
 
@@ -59,7 +58,12 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
         addFragmentContent();
         closeAppHandler = new CloseAppHandler(this);
         closeAppHandler.setListener(this);
-        setupAdView();
+
+        if (ADS_ENABLE) {
+            FrameLayout adsContainer = (FrameLayout) findViewById(R.id.ads_container);
+            adsHandler = new AdsSmallBannerHandler(this, adsContainer);
+            adsHandler.setup();
+        }
     }
 
 
@@ -209,51 +213,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
     @Override
     public void onReallyWantToCloseApp() {
         finish();
-    }
-
-    private void setupAdView() {
-        mAdView = (AdView) findViewById(R.id.adView);
-        if (ADS_ENABLE) {
-            mAdView.setVisibility(View.VISIBLE);
-            mAdView.setAdListener(new AdListener() {
-                @Override
-                public void onAdClosed() {
-                    super.onAdClosed();
-                }
-
-                @Override
-                public void onAdFailedToLoad(int errorCode) {
-                    super.onAdFailedToLoad(errorCode);
-                    mAdView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdLeftApplication() {
-                    super.onAdLeftApplication();
-                }
-
-                @Override
-                public void onAdOpened() {
-                    super.onAdOpened();
-                }
-
-                @Override
-                public void onAdLoaded() {
-                    super.onAdLoaded();
-                    mAdView.setVisibility(View.VISIBLE);
-                }
-            });
-            this.loadADS();
-        } else {
-            mAdView.setVisibility(View.GONE);
-        }
-    }
-
-    public void loadADS() {
-        if (ADS_ENABLE && mAdView != null) {
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
-        }
     }
 
 

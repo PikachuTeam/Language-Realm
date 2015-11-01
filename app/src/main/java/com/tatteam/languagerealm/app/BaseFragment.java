@@ -15,15 +15,6 @@ import com.tatteam.languagerealm.R;
 public abstract class BaseFragment extends Fragment {
     private boolean isPhraseFragment;
 
-    protected abstract boolean isPhraseFragment();
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }
-
     public static void replaceFragment(FragmentManager fragmentManager, BaseFragment newFragment, String fragmentTag,
                                        String transactionName) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -32,6 +23,15 @@ public abstract class BaseFragment extends Fragment {
         transaction.replace(R.id.main_content, newFragment, fragmentTag);
         transaction.addToBackStack(transactionName);
         transaction.commit();
+    }
+
+    protected abstract boolean isPhraseFragment();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
     }
 
     public void setTheme(int id) {

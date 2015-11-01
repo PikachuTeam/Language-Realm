@@ -26,15 +26,15 @@ public class LetterQuickModeAdapter extends RecyclerView.Adapter<LetterQuickMode
     private List<LetterEntity> listLetterEntity;
     private int KIND_LETTER;
 
-    public void setListLetterEntity(List<LetterEntity> listLetterEntity) {
-        this.listLetterEntity = listLetterEntity;
-    }
-
     public LetterQuickModeAdapter(BaseActivity activity, List<LetterEntity> listLetterEntity, int kind) {
         super();
         this.activity = activity;
         this.KIND_LETTER = kind;
         this.listLetterEntity = new ArrayList<>();
+        this.listLetterEntity = listLetterEntity;
+    }
+
+    public void setListLetterEntity(List<LetterEntity> listLetterEntity) {
         this.listLetterEntity = listLetterEntity;
     }
 
@@ -87,7 +87,15 @@ public class LetterQuickModeAdapter extends RecyclerView.Adapter<LetterQuickMode
         return listLetterEntity.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    public void setmListener(ClickListener listener) {
+        this.mlistener = listener;
+    }
+
+    public interface ClickListener {
+        public void onLetterClick(int position);
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvCharacter;
         public CardView cvCharacter;
         public RelativeLayout rippleView;
@@ -110,15 +118,5 @@ public class LetterQuickModeAdapter extends RecyclerView.Adapter<LetterQuickMode
         }
 
 
-
-
-    }
-
-    public interface ClickListener {
-        public void onLetterClick(int position);
-    }
-
-    public void setmListener(ClickListener listener) {
-        this.mlistener = listener;
     }
 }

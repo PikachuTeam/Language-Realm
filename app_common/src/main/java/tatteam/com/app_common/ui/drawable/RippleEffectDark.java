@@ -26,9 +26,9 @@ public class RippleEffectDark extends RippleView {
     }
 
     private void setRippleEffect() {
-        setRippleColor(R.color.drawable_ripple_effect_dark);
+        setRippleColor(R.color.dialog_text_color);
         setRippleAlpha(90);
-        setRippleDuration(80);
+        setRippleDuration(90);
 //        setRippleType(RippleType.DOUBLE);
 //        setZooming(true);
 //        setZoomScale(1.5f);

@@ -52,7 +52,7 @@
 
                         android:layout_gravity="center"
 
-                    />
+                        />
 
 
                 </LinearLayout>
@@ -71,10 +71,9 @@
                         android:paddingBottom="@dimen/margin_5"
                         android:paddingLeft="@dimen/margin_3"
                         android:paddingTop="@dimen/margin_5"
-                        android:scrollbarSize="@dimen/margin_1"
                         android:scrollbarAlwaysDrawVerticalTrack="true"
-                        android:scrollbarThumbVertical="?attr/colorPrimary"
-                        />
+                        android:scrollbarSize="@dimen/margin_1"
+                        android:scrollbarThumbVertical="?attr/colorPrimary" />
 
 
                 </LinearLayout>
@@ -83,11 +82,13 @@
 
 
     </android.support.v7.widget.CardView>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:paddingTop="@dimen/margin_30"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:layout_height="match_parent">
+        android:paddingTop="@dimen/margin_30">
+
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="@dimen/margin_68"

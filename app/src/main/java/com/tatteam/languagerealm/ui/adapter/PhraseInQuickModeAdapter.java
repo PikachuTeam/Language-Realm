@@ -66,6 +66,19 @@ public class PhraseInQuickModeAdapter extends RecyclerView.Adapter<PhraseInQuick
         return listPhraseEntity.size();
     }
 
+    public void setListPhraseEntity(List<PhraseEntity> listPhraseEntity) {
+        this.listPhraseEntity = listPhraseEntity;
+    }
+
+    public void setmListener(clickListener mlisListener) {
+        this.mlisListener = mlisListener;
+    }
+
+    public interface clickListener {
+        public void onPhraseClick(int position);
+
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, RippleView.OnRippleCompleteListener {
         public TextView tvPhrase;
         public CardView bgPhrase;
@@ -78,7 +91,7 @@ public class PhraseInQuickModeAdapter extends RecyclerView.Adapter<PhraseInQuick
             rippleView = (RippleEffectLight) itemView.findViewById(R.id.rippleView);
             tvPhrase = (TextView) itemView.findViewById(R.id.tv_phrase);
             bgPhrase = (CardView) itemView.findViewById(R.id.bg_phrase);
-                        rippleView.setOnRippleCompleteListener(this);
+            rippleView.setOnRippleCompleteListener(this);
         }
 
 
@@ -92,18 +105,5 @@ public class PhraseInQuickModeAdapter extends RecyclerView.Adapter<PhraseInQuick
             if (mlisListener != null)
                 mlisListener.onPhraseClick(getAdapterPosition());
         }
-    }
-
-    public void setListPhraseEntity(List<PhraseEntity> listPhraseEntity) {
-        this.listPhraseEntity = listPhraseEntity;
-    }
-
-    public interface clickListener {
-        public void onPhraseClick(int position);
-
-    }
-
-    public void setmListener(clickListener mlisListener) {
-        this.mlisListener = mlisListener;
     }
 }

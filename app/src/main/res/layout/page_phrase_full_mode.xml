@@ -7,5 +7,6 @@
     android:background="@color/window_background1"
     android:paddingLeft="@dimen/margin_3"
     android:paddingRight="@dimen/margin_4">
-        <include layout="@layout/view_list_letter_in_full_mode"></include>
+
+    <include layout="@layout/view_list_letter_in_full_mode"></include>
 </RelativeLayout>

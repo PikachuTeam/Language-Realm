@@ -21,21 +21,13 @@ import java.util.List;
 
 
 public class PhraseFullModePage extends BasePage implements LetterFullModeAdapter.OnClickLetter {
+    public RelativeLayout contentLetter, contentPhrase;
     private int COLUMN_NUMBER = 6;
-
     private RecyclerView mRvLetter;
     private RecyclerView.LayoutManager mLMLetter;
     private LetterFullModeAdapter mAdapterFullMode;
     private ArrayList<String> listLetter;
     private ProgressBar progressBar;
-
-    public RelativeLayout contentLetter, contentPhrase;
-
-    @Override
-    protected int getContentId() {
-        return R.layout.page_phrase_full_mode;
-    }
-
 
     public PhraseFullModePage(BaseActivity activity, BasePhraseFragment fragment) {
         super(fragment, activity);
@@ -64,7 +56,11 @@ public class PhraseFullModePage extends BasePage implements LetterFullModeAdapte
         }.execute();
 
 
+    }
 
+    @Override
+    protected int getContentId() {
+        return R.layout.page_phrase_full_mode;
     }
 
     public void setUpRvLetter() {

@@ -14,13 +14,13 @@ public class PhraseEntity {
     public int isRecent = 0;
     public boolean isHeader = false;
     public float index;
-    public String sqlTableName="";
+    public String sqlTableName = "";
+
     public void setKind_ID(int i) {
         if (i == 1) kind_ID = R.string.slang;
         else if (i == 2) kind_ID = R.string.idiom;
         else kind_ID = R.string.proverb;
     }
-
 
 
     public void setSQLTable(int i) {

@@ -1,4 +1,4 @@
-package com.tatteam.languagerealm.ui.activity;
+package com.tatteam.languagerealm.app;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -9,17 +9,19 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.database.DataSource;
+import com.tatteam.languagerealm.ui.activity.MainActivity;
 
 import java.util.Locale;
 
 import tatteam.com.app_common.AppCommon;
+import tatteam.com.app_common.util.AppConstant;
 import tatteam.com.app_common.util.AppSpeaker;
 
 
 /**
  * Created by ThanhNH on 9/11/2015.
  */
-public class SplashActivity extends AppCompatActivity {
+public abstract class BaseSplashActivity extends AppCompatActivity {
     private static final long SPLASH_DURATION = 2000;
     private android.os.Handler handler;
     private boolean isDatabaseImported = false;
@@ -57,17 +59,18 @@ public class SplashActivity extends AppCompatActivity {
     private void initAppCommon() {
         AppCommon.getInstance().initIfNeeded(getApplicationContext());
         AppCommon.getInstance().increaseLaunchTime();
+        AppCommon.getInstance().syncAdsSmallBannerIfNeeded(AppConstant.AdsType.SMALL_BANNER_LANGUAGE_LEARNING);
     }
 
     private void initAppSpeaker() {
-        AppSpeaker.getInstance().initIfNeeded(getApplicationContext(), Locale.FRENCH);
+        AppSpeaker.getInstance().initIfNeeded(getApplicationContext(), getLocale());
     }
 
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
     }
-
+    protected abstract Locale getLocale();
     private void importDatabase() {
         AsyncTask task = new AsyncTask() {
             @Override
@@ -88,8 +91,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void switchToMainActivity() {
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-//        BaseActivity.startActivityAnimation(this,new Intent(SplashActivity.this, ChooseTargetActivity.class));
+        startActivity(new Intent(BaseSplashActivity.this, MainActivity.class));
         this.finish();
     }
 

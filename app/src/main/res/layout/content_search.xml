@@ -35,23 +35,23 @@
 
     <RelativeLayout
         android:id="@+id/no_result"
-        android:padding="@dimen/margin_8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_20"
         android:layout_marginRight="@dimen/margin_20"
         android:background="@color/window_background2"
+        android:padding="@dimen/margin_8"
         android:visibility="gone">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:layout_marginLeft="@dimen/margin_20"
+            android:gravity="center_vertical"
             android:text="@string/no_result"
-            android:textStyle="italic"
             android:textColor="?attr/colorPrimaryDark"
-            android:textSize="@dimen/text_size_18" />
+            android:textSize="@dimen/text_size_18"
+            android:textStyle="italic" />
 
     </RelativeLayout>
 </RelativeLayout>

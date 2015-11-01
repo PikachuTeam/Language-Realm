@@ -11,18 +11,20 @@ import com.tatteam.languagerealm.app.BasePhraseFragment;
 public class ProverbFragment extends BasePhraseFragment {
     private int THEME_ID = R.style.ProverbTheme;
     private int FRAGMENT_NAME_ID = R.string.proverb;
-    private int BANNER_ID= R.drawable.proverb;
-    private int STATUS_BAR_COLOR_ID= R.color.proverb_PrimaryDark;
+    private int BANNER_ID = R.drawable.proverb;
+    private int STATUS_BAR_COLOR_ID = R.color.proverb_PrimaryDark;
+    private String SQL_TABLE_NAME = "proverbs";
+
     @Override
     protected int getStatusBarColor() {
         return STATUS_BAR_COLOR_ID;
     }
 
-    private String SQL_TABLE_NAME="proverbs";
     @Override
     protected boolean isPhraseFragment() {
         return true;
     }
+
     @Override
     protected String getSqlTableName() {
         return SQL_TABLE_NAME;

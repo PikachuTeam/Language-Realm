@@ -12,13 +12,10 @@ public abstract class BasePage {
     protected BaseActivity activity;
     protected View content;
 
-    protected abstract int getContentId();
-
-
-
     public BasePage(BasePhraseFragment fragment, BaseActivity activity) {
         this(activity, fragment, null);
     }
+
 
     public BasePage(BaseActivity activity, BasePhraseFragment fragment, ViewGroup parent) {
         this.fragment = fragment;
@@ -32,6 +29,8 @@ public abstract class BasePage {
         }
 
     }
+
+    protected abstract int getContentId();
 
     public View getContent() {
         return content;

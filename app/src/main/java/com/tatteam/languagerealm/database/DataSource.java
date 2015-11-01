@@ -158,7 +158,7 @@ public class DataSource {
         switch (table) {
 
             case "slang":
-                sql ="    SELECT  *\n" +
+                sql = "    SELECT  *\n" +
                         "    FROM  slang\n" +
                         "    WHERE phrase like ? " +
                         "    UNION ALL\n" +
@@ -200,7 +200,7 @@ public class DataSource {
                         "    order by letter";
                 break;
         }
-        sql=sql+"";
+        sql = sql + "";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{query + "%", query + "%", query + "%"});
         List<PhraseEntity> list = new ArrayList<>();
         if (cursor.getCount() == 0) return list;

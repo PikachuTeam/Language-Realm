@@ -72,7 +72,6 @@ public class DetailFragment extends BaseFragment {
     }
 
 
-
     public void setUpToolBar() {
         toolbar.inflateMenu(R.menu.menu_detail);
         toolbar.setTitle(PHRASE_KIND_NAME);

@@ -38,6 +38,7 @@ public class PhraseQuickModePage extends BasePage implements PhraseInQuickModeAd
     private List<LetterEntity> listletter;
     private List<PhraseEntity> listPhrase;
     private ProgressBar progressBar;
+
     public PhraseQuickModePage(BaseActivity activity, BasePhraseFragment fragment) {
         super(fragment, activity);
         progressBar = (ProgressBar) content.findViewById(R.id.progress);
