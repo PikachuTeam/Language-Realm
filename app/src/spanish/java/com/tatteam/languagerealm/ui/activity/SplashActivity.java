@@ -1,4 +1,4 @@
-package com.tatteam.languagerealm.ui.actitivy;
+package com.tatteam.languagerealm.ui.activity;
 
 import com.tatteam.languagerealm.app.BaseSplashActivity;
 

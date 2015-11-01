@@ -51,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
         super.onCreate(savedInstanceState);
 
         AppCommon.getInstance().initIfNeeded(getApplicationContext());
-        AppSpeaker.getInstance().initIfNeeded(getApplicationContext(), Locale.FRENCH);
+//        AppSpeaker.getInstance().initIfNeeded(getApplicationContext(), Locale.FRENCH);
         setContentView(R.layout.activity_main);
         bgHeader = (RelativeLayout) findViewById(R.id.nav_header);
         setUpNavigationView();
