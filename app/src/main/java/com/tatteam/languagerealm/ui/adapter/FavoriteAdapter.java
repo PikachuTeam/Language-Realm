@@ -42,10 +42,15 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         return viewHolder;
     }
 
+    public void updateData( List<PhraseEntity> list){
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-
         if (!list.get(i).isHeader) {
+            viewHolder.phrase.setVisibility(View.VISIBLE);
             viewHolder.phrase_item.setVisibility(View.VISIBLE);
             viewHolder.item_favorite_character.setVisibility(View.GONE);
             viewHolder.tvTitle.setText(Html.fromHtml(list.get(i).phrase));

@@ -24,7 +24,7 @@ public class AssetDatabaseOpenHelper {
     public SQLiteDatabase openDatabase() {
         String dbPath = "data/data/" + context.getPackageName() + "/databases/";
         File dbFile = new File(dbPath);
-        if (!dbFile.exists()) {
+        if (!dbFile.exists() || !new File(dbPath + DB_NAME).exists()) {
             try {
                 dbFile.mkdir();
                 dbFile = new File(dbPath + DB_NAME);

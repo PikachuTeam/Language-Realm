@@ -61,7 +61,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        list = getListFavorite();
+//        list = getListFavorite();
 
         View rootView = inflater.inflate(R.layout.fragment_favorite, container, false);
         lockNavigationView(false);
@@ -140,14 +140,10 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
                 DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "proverbs");
                 break;
         }
-        list.remove(position);
         makeSnackBar(R.string.removed_from_favorite);
         list = getListFavorite();
+        mAdapter.updateData(list);
 
-
-        mAdapter = new FavoriteAdapter(getBaseActivity(), list);
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setmLislistener(this);
         if (list.size() == 0)
             noFavorite.setVisibility(View.VISIBLE);
         else noFavorite.setVisibility(View.GONE);
