@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //Slang color
+    <color name="slang_Primary">#686868</color>
+    <color name="slang_PrimaryDark">#4e4e4e</color>
+    <color name="slang_Accent">#f53838</color>
+
+    //Idiom color
+    <color name="idiom_Primary">#3b4656</color>
+    <color name="idiom_PrimaryDark">#313a48</color>
+    <color name="idiom_Accent">#a0654c</color>
+
+    //Proverb color
+    <color name="proverb_Primary">#a7573c</color>
+    <color name="proverb_PrimaryDark">#934c35</color>
+    <color name="proverb_Accent">#257cab</color>
+
+
+</resources>

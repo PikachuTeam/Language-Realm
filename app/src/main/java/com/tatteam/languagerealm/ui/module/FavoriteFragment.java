@@ -39,7 +39,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
     private FavoriteAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private RelativeLayout noFavorite;
-    private LetterEntity[] letterEntities;
+    private List<LetterEntity> letterEntities;
     private ProgressBar progressBar;
 
     @Override
@@ -144,6 +144,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
         list = getListFavorite();
         mAdapter.updateData(list);
 
+
         if (list.size() == 0)
             noFavorite.setVisibility(View.VISIBLE);
         else noFavorite.setVisibility(View.GONE);
@@ -169,8 +170,8 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
         //set index indioms
         for (int i = 0; i < listFavorite.size(); i++) {
             PhraseEntity phraseEntity = listFavorite.get(i);
-            for (int k = 0; k < letterEntities.length; k++) {
-                LetterEntity letterEntity = letterEntities[k];
+            for (int k = 0; k < letterEntities.size(); k++) {
+                LetterEntity letterEntity = letterEntities.get(k);
                 if (letterEntity.letter == phraseEntity.letter) {
                     phraseEntity.index = letterEntity.id;
                     if (phraseEntity.isHeader) {
@@ -218,35 +219,6 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
     }
 
     public void createListLetter() {
-        letterEntities = new LetterEntity[]{
-                new LetterEntity(1, "A"),
-                new LetterEntity(2, "B"),
-                new LetterEntity(3, "C"),
-                new LetterEntity(4, "D"),
-                new LetterEntity(5, "E"),
-                new LetterEntity(6, "F"),
-                new LetterEntity(7, "G"),
-                new LetterEntity(8, "H"),
-                new LetterEntity(9, "I"),
-                new LetterEntity(10, "J"),
-                new LetterEntity(11, "K"),
-                new LetterEntity(12, "L"),
-                new LetterEntity(13, "M"),
-                new LetterEntity(14, "N"),
-                new LetterEntity(15, "O"),
-                new LetterEntity(16, "P"),
-                new LetterEntity(17, "Q"),
-                new LetterEntity(18, "R"),
-                new LetterEntity(19, "S"),
-                new LetterEntity(20, "T"),
-                new LetterEntity(21, "U"),
-                new LetterEntity(22, "V"),
-                new LetterEntity(23, "W"),
-                new LetterEntity(24, "X"),
-                new LetterEntity(25, "Y"),
-                new LetterEntity(26, "Z"),
-
-
-        };
+        letterEntities = DataSource.getInstance().getAllLetters();
     }
 }

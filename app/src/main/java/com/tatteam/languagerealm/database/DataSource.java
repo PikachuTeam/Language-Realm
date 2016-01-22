@@ -68,6 +68,34 @@ public class DataSource {
         return listLetter;
     }
 
+    public List<LetterEntity> getAllLetters() {
+
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT  distinct(substr(letter,1,1))  FROM  idioms  " +
+                " UNION ALL\n" +
+                " SELECT distinct(substr(letter,1,1)) FROM  slang \n" +
+                " UNION ALL  " +
+                " SELECT distinct(substr(letter,1,1))  FROM  proverbs;", null);
+        List<LetterEntity> listLetter = new ArrayList<>();
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            LetterEntity letterEntity = new LetterEntity();
+            letterEntity.letter = cursor.getString(0);
+            if (!isHadLetterInList(listLetter, letterEntity.letter)) {
+                listLetter.add(letterEntity);
+            }
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return listLetter;
+    }
+
+    public boolean isHadLetterInList(List<LetterEntity> listLetter, String letter) {
+        for (int i = 0; i < listLetter.size(); i++) {
+            if (letter == listLetter.get(i).letter) return true;
+        }
+        return false;
+    }
+
     public List<PhraseEntity> getPhraseByLetter(String letter, String table) {
         String s = letter + "%";
         Cursor cursor = sqLiteDatabase.rawQuery("Select * from " + table + " where letter LIKE ? ", new String[]{s});
