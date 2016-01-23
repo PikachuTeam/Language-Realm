@@ -42,3 +42,4 @@ proguard/
 # Assets
 /*/assets/
 app/assets/
+*.iml

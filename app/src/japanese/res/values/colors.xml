@@ -2,19 +2,20 @@
 <resources>
 
     //Slang color
-    <color name="slang_Primary">#686868</color>
-    <color name="slang_PrimaryDark">#4e4e4e</color>
-    <color name="slang_Accent">#f53838</color>
+    <color name="slang_Primary">#c24493</color>
+    <color name="slang_PrimaryDark">#a63a7e</color>
+    <color name="slang_Accent">#6375da</color>
 
     //Idiom color
-    <color name="idiom_Primary">#3b4656</color>
-    <color name="idiom_PrimaryDark">#313a48</color>
-    <color name="idiom_Accent">#a0654c</color>
+    <color name="idiom_Primary">#466ba1</color>
+    //dada
+    <color name="idiom_PrimaryDark">#36537e</color>
+    <color name="idiom_Accent">#f97036</color>
 
     //Proverb color
-    <color name="proverb_Primary">#a7573c</color>
-    <color name="proverb_PrimaryDark">#934c35</color>
-    <color name="proverb_Accent">#257cab</color>
+    <color name="proverb_Primary">#923fbf</color>
+    <color name="proverb_PrimaryDark">#78319e</color>
+    <color name="proverb_Accent">#fa4f30</color>
 
 
 </resources>
