@@ -28,6 +28,11 @@ android {
             versionCode 2
             versionName '1.1'
         }
+        japanese {
+            applicationId "com.tatteam.languagerealm.japanese"
+            versionCode 2
+            versionName '1.1'
+        }
     }
 
 
