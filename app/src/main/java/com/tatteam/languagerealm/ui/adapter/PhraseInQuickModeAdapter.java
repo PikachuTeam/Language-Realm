@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;
 import com.tatteam.languagerealm.entity.PhraseEntity;
@@ -16,7 +15,7 @@ import com.tatteam.languagerealm.entity.PhraseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-import tatteam.com.app_common.ui.drawable.RippleEffectLight;
+import com.tatteam.languagerealm.app.RippleEffectLight;
 
 
 public class PhraseInQuickModeAdapter extends RecyclerView.Adapter<PhraseInQuickModeAdapter.ViewHolder> {
@@ -79,7 +78,7 @@ public class PhraseInQuickModeAdapter extends RecyclerView.Adapter<PhraseInQuick
 
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, RippleView.OnRippleCompleteListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, tatteam.com.app_common.ui.drawable.RippleView.OnRippleCompleteListener {
         public TextView tvPhrase;
         public CardView bgPhrase;
         public RippleEffectLight rippleView;
@@ -101,7 +100,7 @@ public class PhraseInQuickModeAdapter extends RecyclerView.Adapter<PhraseInQuick
         }
 
         @Override
-        public void onComplete(RippleView rippleView) {
+        public void onComplete(tatteam.com.app_common.ui.drawable.RippleView rippleView) {
             if (mlisListener != null)
                 mlisListener.onPhraseClick(getAdapterPosition());
         }

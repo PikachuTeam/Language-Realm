@@ -57,7 +57,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <tatteam.com.app_common.ui.drawable.RippleEffectDark
+                        <com.tatteam.languagerealm.app.RippleEffectDark
                             android:id="@+id/card_view2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
@@ -125,7 +125,7 @@
                                     android:layout_weight="15"></LinearLayout>
                             </LinearLayout>
 
-                        </tatteam.com.app_common.ui.drawable.RippleEffectDark>
+                        </com.tatteam.languagerealm.app.RippleEffectDark>
                     </RelativeLayout>
 
                     <RelativeLayout

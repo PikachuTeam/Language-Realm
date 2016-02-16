@@ -7,12 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 
 import java.util.ArrayList;
 
-import tatteam.com.app_common.ui.drawable.RippleEffectLight;
+import com.tatteam.languagerealm.app.RippleEffectLight;
 
 
 /**
@@ -70,9 +69,9 @@ public class LetterFullModeAdapter extends RecyclerView.Adapter<LetterFullModeAd
             cvCharacter = (CardView) itemView.findViewById(R.id.card_view);
             tvCharacter = (TextView) itemView.findViewById(R.id.tvCharacter);
             item = (RippleEffectLight) itemView.findViewById(R.id.grid);
-            item.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            item.setOnRippleCompleteListener(new tatteam.com.app_common.ui.drawable.RippleView.OnRippleCompleteListener() {
                 @Override
-                public void onComplete(RippleView rippleView) {
+                public void onComplete(tatteam.com.app_common.ui.drawable.RippleView rippleView) {
                     if (mListener != null) {
                         mListener.onLetterClick(getAdapterPosition());
                     }

@@ -44,6 +44,8 @@ public class DetailFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getBaseActivity().showBigAdsIfNeeded();
+
         AppCommon.getInstance().initIfNeeded(getBaseActivity().getApplicationContext());
         AppSpeaker.getInstance().initIfNeeded(getBaseActivity().getApplicationContext(), Locale.FRENCH);
 

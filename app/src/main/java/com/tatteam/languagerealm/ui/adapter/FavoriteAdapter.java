@@ -11,14 +11,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;
+import com.tatteam.languagerealm.app.RippleEffectDark;
 import com.tatteam.languagerealm.entity.PhraseEntity;
 
 import java.util.List;
-
-import tatteam.com.app_common.ui.drawable.RippleEffectDark;
 
 
 /**
@@ -42,7 +40,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         return viewHolder;
     }
 
-    public void updateData( List<PhraseEntity> list){
+    public void updateData(List<PhraseEntity> list) {
         this.list = list;
         notifyDataSetChanged();
     }
@@ -127,9 +125,9 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                     }
                 }
             });
-            phrase_item.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            phrase_item.setOnRippleCompleteListener(new tatteam.com.app_common.ui.drawable.RippleView.OnRippleCompleteListener() {
                 @Override
-                public void onComplete(RippleView rippleView) {
+                public void onComplete(tatteam.com.app_common.ui.drawable.RippleView rippleView) {
                     if (mlisListener != null) {
                         if (rippleView == phrase_item)
                             mlisListener.onPhraseClick(getAdapterPosition());

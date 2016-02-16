@@ -12,14 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.andexert.library.RippleView;
 import com.tatteam.languagerealm.R;
 import com.tatteam.languagerealm.app.BaseActivity;
+import com.tatteam.languagerealm.app.RippleEffectDark;
 import com.tatteam.languagerealm.entity.PhraseEntity;
 
 import java.util.List;
-
-import tatteam.com.app_common.ui.drawable.RippleEffectDark;
 
 
 /**
@@ -97,9 +95,9 @@ public class PhraseInFullModeAdapter extends RecyclerView.Adapter<PhraseInFullMo
             phrase_item = (RippleEffectDark) itemView.findViewById(R.id.card_view2);
             item_favorite_character = (CardView) itemView.findViewById(R.id.list_item_favorite_character);
             favorite_icon.setOnClickListener(this);
-            phrase_item.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            phrase_item.setOnRippleCompleteListener(new tatteam.com.app_common.ui.drawable.RippleView.OnRippleCompleteListener() {
                 @Override
-                public void onComplete(RippleView rippleView) {
+                public void onComplete(tatteam.com.app_common.ui.drawable.RippleView rippleView) {
                     if (rippleView == phrase_item)
                         mlisListener.onPhraseClick(getAdapterPosition());
                 }

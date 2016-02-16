@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<tatteam.com.app_common.ui.drawable.RippleEffectLight xmlns:android="http://schemas.android.com/apk/res/android"
+<com.tatteam.languagerealm.app.RippleEffectLight xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/rippleView"
@@ -33,5 +33,5 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_21" />
     </android.support.v7.widget.CardView>
-</tatteam.com.app_common.ui.drawable.RippleEffectLight>
+</com.tatteam.languagerealm.app.RippleEffectLight>
 

@@ -24,7 +24,9 @@ import com.tatteam.languagerealm.ui.module.phrasemodule.phrase.SlangFragment;
 import java.util.Locale;
 
 import tatteam.com.app_common.AppCommon;
+import tatteam.com.app_common.ads.AdsBigBannerHandler;
 import tatteam.com.app_common.ads.AdsSmallBannerHandler;
+import tatteam.com.app_common.util.AppConstant;
 import tatteam.com.app_common.util.AppSpeaker;
 import tatteam.com.app_common.util.CloseAppHandler;
 
@@ -34,15 +36,18 @@ import tatteam.com.app_common.util.CloseAppHandler;
  */
 public abstract class BaseActivity extends AppCompatActivity implements CloseAppHandler.OnCloseAppListener {
     private static final boolean ADS_ENABLE = true;
+    private static final int BIG_ADS_SHOWING_INTERVAL = 8;
+    private static int BIG_ADS_SHOWING_COUNTER = 1;
 
     private DrawerLayout drawerLayout;
     private CloseAppHandler closeAppHandler;
-    private AdsSmallBannerHandler adsHandler;
 
     private ListView lvNav;
     private RelativeLayout bgHeader;
     private NavEntity[] listNavItem;
     private NavAdapter mAdapter;
+    private AdsSmallBannerHandler adsSmallBannerHandler;
+    private AdsBigBannerHandler adsBigBannerHandler;
 
     protected abstract BasePhraseFragment getFragmentContent();
 
@@ -61,11 +66,30 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
 
         if (ADS_ENABLE) {
             FrameLayout adsContainer = (FrameLayout) findViewById(R.id.ads_container);
-            adsHandler = new AdsSmallBannerHandler(this, adsContainer);
-            adsHandler.setup();
+            adsSmallBannerHandler = new AdsSmallBannerHandler(this, adsContainer, AppConstant.AdsType.SMALL_BANNER_LANGUAGE_LEARNING);
+            adsSmallBannerHandler.setup();
+
+            adsBigBannerHandler = new AdsBigBannerHandler(this, AppConstant.AdsType.BIG_BANNER_LANGUAGE_LEARNING);
+            adsBigBannerHandler.setup();
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        adsSmallBannerHandler.destroy();
+        adsBigBannerHandler.destroy();
+    }
+
+    public void showBigAdsIfNeeded() {
+        if (BIG_ADS_SHOWING_COUNTER % BIG_ADS_SHOWING_INTERVAL == 0) {
+            try {
+                adsBigBannerHandler.show();
+            } catch (Exception ex) {
+            }
+        }
+        BIG_ADS_SHOWING_COUNTER++;
+    }
 
     @Override
     public void onBackPressed() {
@@ -80,9 +104,9 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
                     BasePhraseFragment fragment1 = (BasePhraseFragment) getFragmentManager().findFragmentById(R.id.main_content);
                     if (fragment1.getContentSearch().getVisibility() == View.VISIBLE) {
                         fragment1.backSearch();
-                    } else closeAppHandler.handlerKeyBack(this);
+                    } else closeAppHandler.setKeyBackPress(this);
                 } else
-                    closeAppHandler.handlerKeyBack(this);
+                    closeAppHandler.setKeyBackPress(this);
             }
 
         }

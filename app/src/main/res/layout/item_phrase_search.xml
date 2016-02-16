@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<tatteam.com.app_common.ui.drawable.RippleEffectDark xmlns:android="http://schemas.android.com/apk/res/android"
+<com.tatteam.languagerealm.app.RippleEffectDark xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
@@ -57,4 +57,4 @@
                 android:textSize="@dimen/text_size_20" />
         </LinearLayout>
     </LinearLayout>
-</tatteam.com.app_common.ui.drawable.RippleEffectDark>
+</com.tatteam.languagerealm.app.RippleEffectDark>
