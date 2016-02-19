@@ -77,12 +77,18 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        adsSmallBannerHandler.destroy();
-        adsBigBannerHandler.destroy();
+        if (ADS_ENABLE) {
+            if (adsSmallBannerHandler != null) {
+                adsSmallBannerHandler.destroy();
+            }
+            if (adsBigBannerHandler != null) {
+                adsBigBannerHandler.destroy();
+            }
+        }
     }
 
     public void showBigAdsIfNeeded() {
-        if (BIG_ADS_SHOWING_COUNTER % BIG_ADS_SHOWING_INTERVAL == 0) {
+        if (ADS_ENABLE && BIG_ADS_SHOWING_COUNTER % BIG_ADS_SHOWING_INTERVAL == 0) {
             try {
                 adsBigBannerHandler.show();
             } catch (Exception ex) {
