@@ -1,6 +1,5 @@
 package com.tatteam.languagerealm.database;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -11,50 +10,17 @@ import com.tatteam.languagerealm.entity.PhraseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+import tatteam.com.app_common.sqlite.BaseDataSource;
+
 
 /**
  * Created by ThanhNH on 2/1/2015.
  */
-public class DataSource {
+public class DataSource extends BaseDataSource {
 
-    private static DataSource instance;
-    private Context context;
-    private SQLiteDatabase sqLiteDatabase;
 
-    private DataSource() {
-    }
-
-    public static DataSource getInstance() {
-        if (instance == null) {
-            instance = new DataSource();
-        }
-        return instance;
-    }
-
-    public void init(Context context) {
-        this.context = context;
-    }
-
-    //import db from assets if need and open connection
-    public void createDatabaseIfNeed() {
-        this.openConnection();
-    }
-
-    private void openConnection() {
-        if (sqLiteDatabase == null || !sqLiteDatabase.isOpen()) {
-            AssetDatabaseOpenHelper assetDatabaseOpenHelper = new AssetDatabaseOpenHelper(context);
-            sqLiteDatabase = assetDatabaseOpenHelper.openDatabase();
-        }
-    }
-
-    private void closeConnection() {
-        if (sqLiteDatabase != null && sqLiteDatabase.isOpen()) {
-            sqLiteDatabase.close();
-        }
-    }
-
-    public List<LetterEntity> getLetters(String table) {
-
+    public static List<LetterEntity> getLetters(String table) {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT distinct(substr(letter,1,1)) FROM " + table + " ORDER by letter", null);
         List<LetterEntity> listLetter = new ArrayList<>();
         cursor.moveToFirst();
@@ -65,11 +31,12 @@ public class DataSource {
             cursor.moveToNext();
         }
         cursor.close();
+        closeConnection();
         return listLetter;
     }
 
-    public List<LetterEntity> getAllLetters() {
-
+    public static List<LetterEntity> getAllLetters() {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT  distinct(substr(letter,1,1))  FROM  idioms  " +
                 " UNION ALL\n" +
                 " SELECT distinct(substr(letter,1,1)) FROM  slang \n" +
@@ -86,17 +53,19 @@ public class DataSource {
             cursor.moveToNext();
         }
         cursor.close();
+        closeConnection();
         return listLetter;
     }
 
-    public boolean isHadLetterInList(List<LetterEntity> listLetter, String letter) {
+    public static boolean isHadLetterInList(List<LetterEntity> listLetter, String letter) {
         for (int i = 0; i < listLetter.size(); i++) {
             if (letter == listLetter.get(i).letter) return true;
         }
         return false;
     }
 
-    public List<PhraseEntity> getPhraseByLetter(String letter, String table) {
+    public static List<PhraseEntity> getPhraseByLetter(String letter, String table) {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         String s = letter + "%";
         Cursor cursor = sqLiteDatabase.rawQuery("Select * from " + table + " where letter LIKE ? ", new String[]{s});
         List<PhraseEntity> list = new ArrayList<>();
@@ -113,12 +82,13 @@ public class DataSource {
             cursor.moveToNext();
         }
         cursor.close();
+        closeConnection();
         return list;
     }
 
 
-    public PhraseEntity getOnePhrase(String pharse, String table) {
-
+    public static PhraseEntity getOnePhrase(String pharse, String table) {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + table + " where phrase = ? limit 1", new String[]{pharse});
         PhraseEntity phrase = new PhraseEntity();
         if (cursor.getCount() > 0) {
@@ -131,11 +101,13 @@ public class DataSource {
             phrase.isRecent = cursor.getInt(5);
             cursor.close();
         }
+        closeConnection();
         return phrase;
     }
 
 
-    public void changeFavoritePhrase(String phrase, String table) {
+    public static void changeFavoritePhrase(String phrase, String table) {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         PhraseEntity entity = getOnePhrase(phrase, table);
         int favorite = entity.isFavorite;
         if (favorite == 1) {
@@ -147,10 +119,12 @@ public class DataSource {
             cursor.moveToFirst();
             cursor.close();
         }
+        closeConnection();
     }
 
 
-    public List<PhraseEntity> getListFavorite() {
+    public static List<PhraseEntity> getListFavorite() {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         Cursor cursor = sqLiteDatabase.rawQuery("    SELECT  *\n" +
                 "    FROM  slang\n" +
                 "    WHERE isFavorite>0\n" +
@@ -178,10 +152,12 @@ public class DataSource {
             cursor.moveToNext();
         }
         cursor.close();
+        closeConnection();
         return list;
     }
 
-    public List<PhraseEntity> getListSearchResutl(String query, String table) {
+    public static List<PhraseEntity> getListSearchResutl(String query, String table) {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         String sql = "";
         switch (table) {
 
@@ -246,10 +222,12 @@ public class DataSource {
             cursor.moveToNext();
         }
         cursor.close();
+        closeConnection();
         return list;
     }
 
-    public List<PhraseEntity> getListRecent(int MAX_COUNT) {
+    public static List<PhraseEntity> getListRecent(int MAX_COUNT) {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT  *\n" +
                 " FROM  slang WHERE isRecent>0\n" +
                 " UNION ALL\n" +
@@ -276,20 +254,23 @@ public class DataSource {
             cursor.moveToNext();
         }
         cursor.close();
+        closeConnection();
         return list;
     }
 
-    public void updateRecent(String phrase, String table) {
-
+    public static void updateRecent(String phrase, String table) {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         int newRecent = getMaxRecent() + 1;
         String value = newRecent + "";
         Cursor cursor = sqLiteDatabase.rawQuery("UPDATE " + table + " SET isRecent= ? WHERE phrase =?", new String[]{value, phrase});
         cursor.moveToFirst();
         cursor.close();
+        closeConnection();
 
     }
 
-    public int getMaxRecent() {
+    public static int getMaxRecent() {
+        SQLiteDatabase sqLiteDatabase = openConnection();
         int max;
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT  *\n" +
                 " FROM  slang WHERE isRecent>0\n" +
@@ -308,6 +289,7 @@ public class DataSource {
         max = cursor.getInt(5);
 
         cursor.close();
+        closeConnection();
         return max;
 
     }

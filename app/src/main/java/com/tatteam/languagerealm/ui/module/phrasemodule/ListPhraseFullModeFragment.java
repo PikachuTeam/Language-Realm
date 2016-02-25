@@ -83,7 +83,7 @@ public class ListPhraseFullModeFragment extends BaseFragment implements PhraseIn
 
     public void loadListPhraseInData() {
         listPhrase = new ArrayList<>();
-        listPhrase = DataSource.getInstance().getPhraseByLetter(LETTER, SQL_TABLE_NAME);
+        listPhrase = DataSource.getPhraseByLetter(LETTER, SQL_TABLE_NAME);
 
     }
 
@@ -108,7 +108,7 @@ public class ListPhraseFullModeFragment extends BaseFragment implements PhraseIn
             listPhrase.get(position).isFavorite = 1;
             makeSnackBar(R.string.added_to_favorite);
         }
-        DataSource.getInstance().changeFavoritePhrase(listPhrase.get(position).phrase, SQL_TABLE_NAME);
+        DataSource.changeFavoritePhrase(listPhrase.get(position).phrase, SQL_TABLE_NAME);
         mAdapterPhrase.notifyDataSetChanged();
     }
 

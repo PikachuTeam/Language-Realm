@@ -98,13 +98,13 @@ public class DetailFragment extends BaseFragment {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.remove_favorite) {
-                    DataSource.getInstance().changeFavoritePhrase(phrase, SQL_TABLE_NAME);
+                    DataSource.changeFavoritePhrase(phrase, SQL_TABLE_NAME);
                     toolbar.getMenu().setGroupVisible(R.id.favorite_true, false);
                     toolbar.getMenu().setGroupVisible(R.id.favorite_false, true);
                     makeSnackBar(R.string.removed_from_favorite);
                 }
                 if (item.getItemId() == R.id.add_favorite) {
-                    DataSource.getInstance().changeFavoritePhrase(phrase, SQL_TABLE_NAME);
+                    DataSource.changeFavoritePhrase(phrase, SQL_TABLE_NAME);
                     toolbar.getMenu().setGroupVisible(R.id.favorite_true, true);
                     toolbar.getMenu().setGroupVisible(R.id.favorite_false, false);
                     makeSnackBar(R.string.added_to_favorite);
@@ -124,8 +124,8 @@ public class DetailFragment extends BaseFragment {
         PHRASE_KIND_NAME = bundle.getString("phrase_kind_name");
         phraseEntity = new PhraseEntity();
 
-        phraseEntity = DataSource.getInstance().getOnePhrase(phrase, SQL_TABLE_NAME);
-        DataSource.getInstance().updateRecent(phrase, SQL_TABLE_NAME);
+        phraseEntity = DataSource.getOnePhrase(phrase, SQL_TABLE_NAME);
+        DataSource.updateRecent(phrase, SQL_TABLE_NAME);
 
 
     }

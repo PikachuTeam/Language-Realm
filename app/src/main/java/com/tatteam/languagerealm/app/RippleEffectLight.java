@@ -1,6 +1,7 @@
 package com.tatteam.languagerealm.app;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 
 
@@ -26,7 +27,7 @@ public class RippleEffectLight extends RippleView {
     }
 
     private void setRippleEffect() {
-        setRippleColor(R.color.white_highligt);
+        setRippleColor(R.color.white);
         setRippleAlpha(90);
         setRippleDuration(80);
 //        setRippleType(RippleType.DOUBLE);

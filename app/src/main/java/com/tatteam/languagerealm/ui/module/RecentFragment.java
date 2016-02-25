@@ -143,13 +143,13 @@ public class RecentFragment extends BaseFragment implements FavoriteAdapter.Clic
 
         switch (listRecent.get(position).kind_ID) {
             case R.string.slang:
-                DataSource.getInstance().changeFavoritePhrase(listRecent.get(position).phrase, "slang");
+                DataSource.changeFavoritePhrase(listRecent.get(position).phrase, "slang");
                 break;
             case R.string.idiom:
-                DataSource.getInstance().changeFavoritePhrase(listRecent.get(position).phrase, "idioms");
+                DataSource.changeFavoritePhrase(listRecent.get(position).phrase, "idioms");
                 break;
             case R.string.proverb:
-                DataSource.getInstance().changeFavoritePhrase(listRecent.get(position).phrase, "proverbs");
+                DataSource.changeFavoritePhrase(listRecent.get(position).phrase, "proverbs");
                 break;
         }
         mAdapter.notifyDataSetChanged();
@@ -160,7 +160,7 @@ public class RecentFragment extends BaseFragment implements FavoriteAdapter.Clic
     }
 
     public List<PhraseEntity> getListRecent() {
-        listRecent = DataSource.getInstance().getListRecent(MAX_COUNT);
+        listRecent = DataSource.getListRecent(MAX_COUNT);
         return listRecent;
     }
 

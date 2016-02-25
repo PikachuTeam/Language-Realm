@@ -97,8 +97,8 @@ public class PhraseQuickModePage extends BasePage implements PhraseInQuickModeAd
     public void loadDta() {
         listletter = new ArrayList<>();
         listPhrase = new ArrayList<>();
-        listletter = DataSource.getInstance().getLetters(fragment.SQL_TABLE_NAME);
-        listPhrase = DataSource.getInstance().getPhraseByLetter(listletter.get(0).letter, fragment.SQL_TABLE_NAME);
+        listletter = DataSource.getLetters(fragment.SQL_TABLE_NAME);
+        listPhrase = DataSource.getPhraseByLetter(listletter.get(0).letter, fragment.SQL_TABLE_NAME);
 
         if (!listLetterHasSelected()) {
             listletter.get(0).selected = true;
@@ -134,7 +134,7 @@ public class PhraseQuickModePage extends BasePage implements PhraseInQuickModeAd
         adapterLetter.setListLetterEntity(listletter);
         adapterLetter.notifyDataSetChanged();
 
-        listPhrase = DataSource.getInstance().getPhraseByLetter(listletter.get(position).letter.toUpperCase(), fragment.SQL_TABLE_NAME);
+        listPhrase = DataSource.getPhraseByLetter(listletter.get(position).letter.toUpperCase(), fragment.SQL_TABLE_NAME);
         adapterPhrase.setListPhraseEntity(listPhrase);
         adapterPhrase.notifyDataSetChanged();
         SELECTED_POSITION = position;

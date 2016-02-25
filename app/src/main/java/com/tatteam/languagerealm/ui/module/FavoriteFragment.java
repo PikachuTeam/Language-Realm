@@ -131,13 +131,13 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
 
         switch (list.get(position).kind_ID) {
             case R.string.slang:
-                DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "slang");
+                DataSource.changeFavoritePhrase(list.get(position).phrase, "slang");
                 break;
             case R.string.idiom:
-                DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "idioms");
+                DataSource.changeFavoritePhrase(list.get(position).phrase, "idioms");
                 break;
             case R.string.proverb:
-                DataSource.getInstance().changeFavoritePhrase(list.get(position).phrase, "proverbs");
+                DataSource.changeFavoritePhrase(list.get(position).phrase, "proverbs");
                 break;
         }
         makeSnackBar(R.string.removed_from_favorite);
@@ -151,7 +151,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
     }
 
     public List<PhraseEntity> getListFavorite() {
-        list = DataSource.getInstance().getListFavorite();
+        list = DataSource.getListFavorite();
         List<PhraseEntity> listFavorite = new ArrayList<>();
         //create favorites
         for (int i = 0; i < list.size(); i++) {
@@ -219,6 +219,6 @@ public class FavoriteFragment extends BaseFragment implements FavoriteAdapter.Cl
     }
 
     public void createListLetter() {
-        letterEntities = DataSource.getInstance().getAllLetters();
+        letterEntities = DataSource.getAllLetters();
     }
 }

@@ -76,7 +76,7 @@ public class PhraseFullModePage extends BasePage implements LetterFullModeAdapte
 
     public void loadLetterInData() {
         listLetter = new ArrayList<>();
-        List<LetterEntity> list = DataSource.getInstance().getLetters(fragment.SQL_TABLE_NAME);
+        List<LetterEntity> list = DataSource.getLetters(fragment.SQL_TABLE_NAME);
         for (int i = 0; i < list.size(); i++) {
             listLetter.add(list.get(i).letter);
         }

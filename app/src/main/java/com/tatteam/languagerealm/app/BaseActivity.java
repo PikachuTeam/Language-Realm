@@ -127,9 +127,10 @@ public abstract class BaseActivity extends AppCompatActivity implements CloseApp
     }
 
     public void lockNavigationView(boolean isLock) {
-        if (isLock) drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-        else drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-
+        if (drawerLayout != null) {
+            if (isLock) drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            else drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        }
     }
 
     private void setUpNavigationView() {

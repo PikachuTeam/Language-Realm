@@ -218,7 +218,7 @@ public abstract class BasePhraseFragment extends BaseFragment {
                     dialogNoResult.setVisibility(View.GONE);
                     listResult.setVisibility(View.GONE);
                 } else {
-                    listPhraseSearch = DataSource.getInstance().getListSearchResutl(newText, SQL_TABLE_NAME);
+                    listPhraseSearch = DataSource.getListSearchResutl(newText, SQL_TABLE_NAME);
                     adapterSearch = new SearchAdapter(getBaseActivity(), listPhraseSearch);
                     lvSearch.setAdapter(adapterSearch);
 
