@@ -1,0 +1,123 @@
+{
+  "project_info": {
+    "project_number": "130459143977",
+    "firebase_url": "https://testdynamiclink-90306.firebaseio.com",
+    "project_id": "testdynamiclink-90306",
+    "storage_bucket": "testdynamiclink-90306.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130459143977:android:930a4edc3d3e73e0",
+        "android_client_info": {
+          "package_name": "com.tatteam.languagerealm.french"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130459143977-37hnrh14f0fhos5rk3853r106qou0lq7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tatteam.languagerealm.french",
+            "certificate_hash": "09f826010a2f20657a0ca43c25612bd8b56e8aa2"
+          }
+        },
+        {
+          "client_id": "130459143977-rvv14f2uk9j9tril2mbmjb2m8vnrtlcm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tatteam.languagerealm.french",
+            "certificate_hash": "5489de20c4647735262ee59c1b4f24b105f02009"
+          }
+        },
+        {
+          "client_id": "130459143977-ucnr9io77enj46idtp7veaag348me7ku.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "130459143977-ucnr9io77enj46idtp7veaag348me7ku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi9RRkiV8AwayoCbcl0htbTv75rsdJduc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130459143977-ucnr9io77enj46idtp7veaag348me7ku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130459143977:android:086b772998f98c51",
+        "android_client_info": {
+          "package_name": "tatteam.com.frenchidiom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130459143977-gtsnm54ionkc0qspniqq2fa1rrplq6oj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tatteam.com.frenchidiom",
+            "certificate_hash": "09f826010a2f20657a0ca43c25612bd8b56e8aa2"
+          }
+        },
+        {
+          "client_id": "130459143977-jlo0j053icfu78o9pe3quubhol7frpnu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tatteam.com.frenchidiom",
+            "certificate_hash": "5489de20c4647735262ee59c1b4f24b105f02009"
+          }
+        },
+        {
+          "client_id": "130459143977-ucnr9io77enj46idtp7veaag348me7ku.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "130459143977-ucnr9io77enj46idtp7veaag348me7ku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi9RRkiV8AwayoCbcl0htbTv75rsdJduc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130459143977-ucnr9io77enj46idtp7veaag348me7ku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
