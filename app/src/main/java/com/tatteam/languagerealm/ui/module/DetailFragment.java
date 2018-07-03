@@ -34,7 +34,6 @@ public class DetailFragment extends BaseFragment {
     private TextToSpeech textToSpeech;
     private FloatingActionButton fabWeb, fabTts;
 
-
     @Override
     protected boolean isPhraseFragment() {
         return false;
@@ -112,8 +111,6 @@ public class DetailFragment extends BaseFragment {
                 return false;
             }
         });
-
-
     }
 
 
@@ -126,8 +123,6 @@ public class DetailFragment extends BaseFragment {
 
         phraseEntity = DataSource.getOnePhrase(phrase, SQL_TABLE_NAME);
         DataSource.updateRecent(phrase, SQL_TABLE_NAME);
-
-
     }
 
     public void setText() {
